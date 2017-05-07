@@ -44,7 +44,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent): ").split()
+      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -60,7 +60,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArguments ([-h] -k0 path_to_key0 -k1 path_to_key1 -k2 path_to_key2 -c0 cipher1 -c1 cipher2 -c2 cipher3): ").split()
+      args=input("\n\t\tArguments ([-h] -k0 path_to_key0 -k1 path_to_key1 -k2 path_to_key2 -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
 
       if (args[0] != '-h'):
 
@@ -85,7 +85,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent): ").split()
+      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -101,7 +101,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent -c ciphertext --host hostname -p port --error error padding message): ").split()
+      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent -c ciphertext --host hostname -p port --error error padding message):\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -117,7 +117,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments [-h] -n common modulus -e1 first exponent -e2 second exponent -c1 first cipher -c2 second cipher: ").split()
+      args=input("\n\t\t Arguments [-h] -n common modulus -e1 first exponent -e2 second exponent -c1 first cipher -c2 second cipher:\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -133,7 +133,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArgument ([-h] -k K): ").split()
+      args=input("\n\t\tArgument ([-h] -k K):\n\n\t\t\t").split()
 
     except:
 
