@@ -28,7 +28,7 @@ def accueil(arg):
     print("\t\t3. Fermat Attack")
     print("\t\t4. Bleichenbacher Attack")
     print("\t\t5. Common Modulus Attack")
-    print("\t\t6. Chosen Ciphertext Attack")
+    print("\t\t6. Chosen Plaintext Attack")
     print("\n\tList of the available tools:\n")
     print("\t\t7. RSA Public Key parameters extraction")
     print("\t\t8. RSA Private Key construction")
@@ -133,7 +133,7 @@ def choose(arg):
 
   elif attack == "6":
 
-    print("\n\t\t\t ***** Chosen Ciphertext Attack *****")
+    print("\n\t\t\t ***** Chosen Plaintext Attack *****")
 
     try:
 
@@ -146,7 +146,7 @@ def choose(arg):
 
     args=' '.join([str(i) for i in args])
 
-    subprocess.call(["Attacks/Chosen_Ciphertext/chocip.py "+args], shell=True)
+    subprocess.call(["Attacks/Chosen_Plaintext/chopla.py "+args], shell=True)
 
   elif attack == "7":
 

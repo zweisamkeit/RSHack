@@ -7,7 +7,7 @@
 	* Fermat Attack
 	* Bleichenbacher Attack
 	* Common Modulus Attack
-	* Chosen Ciphertext Attack
+	* Chosen Plaintext Attack
 
 * It can also extract the modulus and the exponent of an RSA public key (decimal value), and create and RSA Private Key using its parameters
 
