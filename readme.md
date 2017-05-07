@@ -1,6 +1,6 @@
 # RSHack for CTF
 
-* This tool written written in python allows to carry out one of the available attacks on RSA in this repository:
+* This tool written in python allows to carry out one of the available attacks on RSA in this repository:
 
 	* Wiener Attack
 	* Hastad Attack
