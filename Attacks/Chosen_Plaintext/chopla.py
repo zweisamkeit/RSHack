@@ -45,14 +45,14 @@ if __name__ == "__main__" :
 
   p = out / 2
 
-  print("\tThe plaintext is: %i\n" % p)
+  print("\t[+] The plaintext is: %i\n" % p)
 
   try:
 
     p_text = hex(p)[2:].replace('L','').decode('hex')
 
-    print("\tThe interpreted plaintext: %s\n" % p_text)
+    print("\t[+] The interpreted plaintext: %s\n" % p_text)
 
   except:
 
-    print("\tThe plaintext is not interpretable\n")
+    print("\t[-] The plaintext is not interpretable\n")

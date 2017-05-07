@@ -89,14 +89,14 @@ if __name__ == "__main__" :
 
   # Affichage du résultat
 
-  print "\tDecimal plaintext: ",res,"\n"
+  print "\t[+] Decimal plaintext: ",res,"\n"
 
   try:
 
     plaintext = hex(res)[2:].replace('L','').decode('hex')
 
-    print "\tInterpreted plaintext: ",plaintext,"\n"
+    print "\t[+] Interpreted plaintext: ",plaintext,"\n"
 
   except:
 
-    print("\tThe plaintext isn't interpretable\n")
+    print("\t[-] The plaintext isn't interpretable\n")

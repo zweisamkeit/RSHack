@@ -52,7 +52,7 @@ if __name__ == "__main__" :
 
   k0,k1,k2,c0,c1,c2 = args.k0,args.k1,args.k2,args.c0,args.c1,args.c2
 
-  print("\n\tKeys paramters extraction...")
+  print("\n\t[+] Keys paramters extraction...")
 
   key0=RSA.importKey(open(k0, 'r'))
   key1=RSA.importKey(open(k1, 'r'))
@@ -62,33 +62,33 @@ if __name__ == "__main__" :
 
   if (key0.e != key1.e or key0.e != key2.e or key1.e != key2.e):
 
-    print("\n\tThese keys are not good candidates for this attack")
+    print("\n\t[+] These keys are not good candidates for this attack")
 
   e = key0.e
 
-  print("\n\tModular inverse calculation...")
+  print("\n\t[+] Modular inverse calculation...")
 
   b0,b1,b2 = xgcd(n0,n1*n2)[2], xgcd(n1,n0*n2)[2], xgcd(n2,n0*n1)[2]
 
-  print("\tModular inverse calculation done...")
+  print("\t[+] Modular inverse calculation done...")
 
-  print("\n\tSystem solution cube calculation...")
+  print("\n\t[+] System solution cube calculation...")
 
   m=(b0 * c0 * n1 * n2) + (b1 * c1 * n0 * n2) + (b2 * c2 * n0 * n1)
   m %= (n0 * n1 * n2)
 
-  print("\tSystem solution cube calculation done")
+  print("\t[+] System solution cube calculation done")
 
-  print("\n\tSystem solution calculation...")
+  print("\n\t[+] System solution calculation...")
 
   x = root(m,e)[0]
 
-  print("\tSystem solution calculation done")
+  print("\t[+] System solution calculation done")
 
-  print("\n\tSolution interpretation...")
+  print("\n\t[+] Solution interpretation...")
 
   p = hex(x)[2:].replace('L','').decode('hex')
 
-  print("\tSolution interpretation done")
+  print("\t[+] Solution interpretation done")
 
-  print("\n\t\tThe plaintext is: "+p.replace('\n','\n\t\t'))
+  print("\n\t\t[+] The plaintext is: "+p.replace('\n','\n\t\t'))

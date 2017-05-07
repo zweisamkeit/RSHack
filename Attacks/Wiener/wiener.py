@@ -115,7 +115,7 @@ def wiener(n, e):
     
   else:
 
-    print("\tThis RSA public key isn't a valid candidate to a Wiener Attack\n")
+    print("\t[-] This RSA public key isn't a valid candidate to a Wiener Attack\n")
     exit(0)
 
 # Main (Pour une fois que j'en fais un... :))
@@ -132,8 +132,8 @@ if __name__ == "__main__":
 
   d = wiener(args.n, args.e)
 
-  print ("\tPrivate exponent:",d,"\n")
+  print ("\t[+] Private exponent:",d,"\n")
 
   key = Crypto.PublicKey.RSA.construct((args.n,args.e,d))
 
-  print("\tPrivate key: \n\n",Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8'),"\n")
+  print("\t[+] Private key: \n\n",Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8'),"\n")

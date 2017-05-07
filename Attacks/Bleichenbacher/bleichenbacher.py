@@ -73,9 +73,7 @@ host=args.host
 port=args.port
 error=args.error
 
-print n,e,c,host,port,error
-
-print "\tConnection to Oracle..."
+print "\t[+] Connection to Oracle..."
 
 server=(host,port)
 
@@ -83,7 +81,7 @@ sock=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 sock.connect(server)
 
-print "\tConnection established\n"
+print "\t[+] Connection established\n"
 
 # Appel à Oracle qui va déchiffrer le cryptogramme et indiquer si le padding est valide ou non
 
@@ -152,9 +150,9 @@ def Inv_mod(x, m):
 
 # Blinding - Étape 1
 
-print "\tAttack launch...\n"
+print "\t[+] Attack launch...\n"
 
-print "\tBinding launch..."
+print "\t[+] Binding launch..."
 
 maximum=10**10 # Valeur arbitraire
 s0 = random.randint(1,maximum)
@@ -164,7 +162,7 @@ while not Oracle(c0):
   s0 = random.randint(1,maximum) # Cherche un s0 random tel que c0 soit conforme
   c0 = (c * (pow(s0,e,n))) % n
 
-print "\tBinding done.\n"
+print "\t[+] Binding done.\n"
 #print "s0 random utilisé : ", s0
 
 k = 256 # Taille du module en bytes
@@ -177,7 +175,7 @@ M |= set([B2, B3-1])
 
 # Initialisation - Étape 2.a
 
-print "\tConstruction and narrowing the sets..."
+print "\t[+] Construction and narrowing the sets..."
 
 si = Exces(n,3*B) # On initialise si
 si = Recherche(si) # On cherche le premier si valable
@@ -200,12 +198,12 @@ def Iteration(si,M):
   elif (len(M) == 1) : # S'il n'y a qu'un seul intervalle encadrant le plaintext # Étape 4
     (a,b)=(list(M)[0][0],list(M)[0][1])
     if (a==b): # Si l'amplitude de l'unique intervalle est nulle, on a le plaintext
-      print "\tConstruction and narrowing the sets done.\n"
+      print "\t[+] Construction and narrowing the sets done.\n"
       plaintext = (a * Inv_mod(s0,n)) % n
-      print "\tThe plaintext is: \n\n", hex(plaintext)[3:].replace('L','').decode('hex') # Renvoie le plaintext
-      print "\n\tAttack done.\n"
+      print "\t[+] The plaintext is: \n\n", hex(plaintext)[3:].replace('L','').decode('hex') # Renvoie le plaintext
+      print "\n\t[+] Attack done.\n"
       sock.close()
-      print "\tConnection closed.\n"
+      print "\t[+] Connection closed.\n"
       exit()
     else : # Si l'on n'a qu'un intervalle d'amplitude non nulle, on utilise l'optimisation binaire pour trouver si plus rapidement # Étape 2.c
       si = Recherche_Binaire(si,a,b) # On recherche le prochain si de manière optimisée

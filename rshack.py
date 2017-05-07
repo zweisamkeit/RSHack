@@ -33,6 +33,7 @@ def accueil(arg):
     print("\t\t7. RSA Public Key parameters extraction")
     print("\t\t8. RSA Private Key construction")
     print("\t\t9. RSA Ciphertext Decipher")
+    print("\t\t10. RSA Ciphertext Encipher")
 
     return(input("\n\tWhat attack or tool do you want to carry out? "))
 
@@ -55,7 +56,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
     
     subprocess.call(["Attacks/Wiener/wiener.py "+args], shell=True)
@@ -80,7 +81,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     subprocess.call(["Attacks/Hastad/hastad.py "+args], shell=True)
@@ -96,7 +97,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     subprocess.call(["Attacks/Fermat/fermat.py "+args], shell=True)
@@ -112,7 +113,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     subprocess.call(["Attacks/Bleichenbacher/bleichenbacher.py "+args], shell=True)
@@ -128,7 +129,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     subprocess.call(["Attacks/Common_Modulus/comod.py "+args], shell=True)
@@ -143,7 +144,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     args=' '.join([str(i) for i in args])
@@ -160,7 +161,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     if (args[0] == '-k' and args[1]!='/'):
@@ -181,7 +182,7 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     args=' '.join([str(i) for i in args])
@@ -198,13 +199,29 @@ def choose(arg):
 
     except:
 
-      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
       exit()
 
     args=' '.join([str(i) for i in args])
 
     subprocess.call(["Attacks/Other/Decipher/decipher.py "+args], shell=True)
 
+  elif attack== "10":
+
+    print("\n\t\t\t ***** RSA Encipher *****")
+
+    try:
+
+      args=input("\n\t\tArgument ([-h] -n modulus -e public_exponent -p plaintext):\n\n\t\t\t").split()
+
+    except:
+
+      print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+      exit()
+
+    args=' '.join([str(i) for i in args])
+
+    subprocess.call(["Attacks/Other/Encipher/encipher.py "+args], shell=True)
 
   else:
  

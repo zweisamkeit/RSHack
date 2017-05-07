@@ -114,7 +114,7 @@ if __name__ == "__main__" :
 
   (p, q) = fermat(args.n)
 
-  print("\n\tn factorization:",p,"*",q,"\n")
+  print("\n\t[+] Factorization:",p,"*",q,"\n")
 
   # On calcule l'indicatrice d'Euler pour reconstruire l'exposant privé d
 
@@ -122,10 +122,10 @@ if __name__ == "__main__" :
 
   d = inv_modulo(args.e, phi)
 
-  print("\tPrivate exponent:",d,"\n")
+  print("\t[+] Private exponent:",d,"\n")
 
   # Reconstruction de la clé privée
 
   key = Crypto.PublicKey.RSA.construct((args.n,args.e,d,p,q))  
 
-  print("\tPrivate key: \n\n\t\t",Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8').replace('\n','\n\t\t'),"\n")
+  print("\t[+] Private key: \n\n\t\t",Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8').replace('\n','\n\t\t'),"\n")
