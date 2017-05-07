@@ -32,6 +32,8 @@ def accueil(arg):
     print("\n\tList of the available tools:\n")
     print("\t\t7. RSA Public Key parameters extraction")
     print("\t\t8. RSA Private Key construction")
+    print("\t\t9. RSA Ciphertext Decipher")
+
     return(input("\n\tWhat attack or tool do you want to carry out? "))
 
   elif arg == "again":
@@ -185,6 +187,24 @@ def choose(arg):
     args=' '.join([str(i) for i in args])
 
     subprocess.call(["Attacks/Other/Private_Key/privkey.py "+args], shell=True)
+
+  elif attack== "9":
+
+    print("\n\t\t\t ***** RSA Decipher *****")
+
+    try:
+
+      args=input("\n\t\tArgument ([-h] -n modulus -d private_exponent -c ciphertext):\n\n\t\t\t").split()
+
+    except:
+
+      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      exit()
+
+    args=' '.join([str(i) for i in args])
+
+    subprocess.call(["Attacks/Other/Decipher/decipher.py "+args], shell=True)
+
 
   else:
  
