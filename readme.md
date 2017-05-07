@@ -9,6 +9,6 @@
 	* Common Modulus Attack
 	* Chosen Plaintext Attack
 
-* It can also extract the modulus and the exponent of an RSA public key (decimal value), and create and RSA Private Key using its parameters
+* It can also extract the modulus and the exponent of an RSA public key (decimal value), create an RSA Private Key using its parameters (pem format), and some other features.
 
 * More informations: https://zweisamkeit.fr/rshack/ (fr)
