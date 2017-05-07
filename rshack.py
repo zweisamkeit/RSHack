@@ -140,7 +140,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArguments ([-h] -n N -e E -c C):\n\n\t\t\t").split()
+      args=input("\n\t\tArguments ([-h] -n modulus -e public_exponent -c ciphertext):\n\n\t\t\t").split()
 
     except:
 
