@@ -91,6 +91,12 @@ if __name__ == "__main__" :
 
   print "\tDecimal plaintext: ",res,"\n"
 
-  plaintext = hex(res)[2:].replace('L','').decode('hex')
+  try:
 
-  print "\tInterpreted plaintext: ",plaintext,"\n"
+    plaintext = hex(res)[2:].replace('L','').decode('hex')
+
+    print "\tInterpreted plaintext: ",plaintext,"\n"
+
+  except:
+
+    print("\tThe plaintext isn't interpretable\n")
