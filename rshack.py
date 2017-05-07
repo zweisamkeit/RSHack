@@ -30,10 +30,10 @@ def accueil(arg):
     print("\t\t5. Common Modulus Attack")
     print("\t\t6. Chosen Plaintext Attack")
     print("\n\tList of the available tools:\n")
-    print("\t\t7. RSA Public Key parameters extraction")
-    print("\t\t8. RSA Private Key construction")
-    print("\t\t9. RSA Ciphertext Decipher")
-    print("\t\t10. RSA Ciphertext Encipher")
+    print("\t\ta. RSA Public Key parameters extraction")
+    print("\t\tb. RSA Private Key construction")
+    print("\t\tc. RSA Ciphertext Decipher")
+    print("\t\td. RSA Ciphertext Encipher")
 
     return(input("\n\tWhat attack or tool do you want to carry out? "))
 
@@ -151,7 +151,7 @@ def choose(arg):
 
     subprocess.call(["Attacks/Chosen_Plaintext/chopla.py "+args], shell=True)
 
-  elif attack == "7":
+  elif attack == "a":
 
     print("\n\t\t\t ***** Parameters extraction *****")
 
@@ -172,7 +172,7 @@ def choose(arg):
 
     subprocess.call(["Attacks/Other/Extractor/extractor.py "+args], shell=True)
 
-  elif attack== "8":
+  elif attack== "b":
 
     print("\n\t\t\t ***** RSA Private Key constructor *****")
 
@@ -189,7 +189,7 @@ def choose(arg):
 
     subprocess.call(["Attacks/Other/Private_Key/privkey.py "+args], shell=True)
 
-  elif attack== "9":
+  elif attack== "c":
 
     print("\n\t\t\t ***** RSA Decipher *****")
 
@@ -206,7 +206,7 @@ def choose(arg):
 
     subprocess.call(["Attacks/Other/Decipher/decipher.py "+args], shell=True)
 
-  elif attack== "10":
+  elif attack== "d":
 
     print("\n\t\t\t ***** RSA Encipher *****")
 
