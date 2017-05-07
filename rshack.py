@@ -13,11 +13,13 @@ def accueil(arg):
 
   if arg == "first":
 
+    subprocess.call(["clear"], shell=True)
+
     print ("\n")
     print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
     print ("\t\t          RSHack         ")
     print ("\t\t       Zweisamkeit       ")
-    print ("\t\t    Licence GNU GPL v3   ")
+    print ("\t\t        GNU GPL v3       ")
     print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
     print ("\n\n")
     print("\tList of the available attacks:")
@@ -27,8 +29,11 @@ def accueil(arg):
     print("\t\t3. Fermat Attack")
     print("\t\t4. Bleichenbacher Attack")
     print("\t\t5. Common Modulus Attack")
-    print("\n\t\t6. RSA public key parameters extraction")
-    return(input("\n\tWhat attack do you want to carry out? "))
+    print("\n\tList of the available tools:")
+    print ("\n")
+    print("\t\t6. RSA Public Key parameters extraction")
+    print("\t\t7. RSA Private Key construction")
+    return(input("\n\tWhat attack or tool do you want to carry out? "))
 
   elif arg == "again":
 
@@ -147,6 +152,23 @@ def choose(arg):
     args=' '.join([str(i) for i in args])
 
     subprocess.call(["Attacks/Other/Extractor/extractor.py "+args], shell=True)
+
+  elif attack== "7":
+
+    print("\n\t\t\t ***** RSA Private Key constructor *****")
+
+    try:
+
+      args=input("\n\t\tArgument ([-h] -p first_factorization_element -q second_factorization_element -e public_exponent):\n\n\t\t\t").split()
+
+    except:
+
+      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      exit()
+
+    args=' '.join([str(i) for i in args])
+
+    subprocess.call(["Attacks/Other/Private_Key/privkey.py "+args], shell=True)
 
   else:
  

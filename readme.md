@@ -8,6 +8,6 @@
 	* Bleichenbacher Attack
 	* Common Modulus Attack
 
-* It can also extract the modulus and the exponent of an RSA public key (decimal value)
+* It can also extract the modulus and the exponent of an RSA public key (decimal value), and create and RSA Private Key using its parameters
 
 * More informations: https://zweisamkeit.fr/rshack/ (fr)
