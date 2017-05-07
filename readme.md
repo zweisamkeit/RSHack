@@ -1,6 +1,6 @@
-# RSHack
+# RSHack for CTF
 
-* This wrapper allows to carry out one of the available attacks on RSA in this repository:
+* This tool written in python allows to carry out one of the available attacks on RSA in this repository:
 
 	* Wiener Attack
 	* Hastad Attack
@@ -10,4 +10,4 @@
 
 * It can also extract the modulus and the exponent of an RSA public key (decimal value)
 
-* https://zweisamkeit.fr/rshack/
+* More informations: https://zweisamkeit.fr/rshack/ (fr)
