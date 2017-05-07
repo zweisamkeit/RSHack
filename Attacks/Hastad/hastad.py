@@ -60,6 +60,10 @@ if __name__ == "__main__" :
 
   n0, n1, n2 = key0.n, key1.n, key2.n
 
+  if (key0.e != key1.e or key0.e != key2.e or key1.e != key2.e):
+
+    print("\n\tThese keys are not good candidates for this attack")
+
   e = key0.e
 
   print("\n\tModular inverse calculation...")
