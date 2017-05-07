@@ -28,9 +28,10 @@ def accueil(arg):
     print("\t\t3. Fermat Attack")
     print("\t\t4. Bleichenbacher Attack")
     print("\t\t5. Common Modulus Attack")
+    print("\t\t6. Chosen Ciphertext Attack")
     print("\n\tList of the available tools:\n")
-    print("\t\t6. RSA Public Key parameters extraction")
-    print("\t\t7. RSA Private Key construction")
+    print("\t\t7. RSA Public Key parameters extraction")
+    print("\t\t8. RSA Private Key construction")
     return(input("\n\tWhat attack or tool do you want to carry out? "))
 
   elif arg == "again":
@@ -132,6 +133,23 @@ def choose(arg):
 
   elif attack == "6":
 
+    print("\n\t\t\t ***** Chosen Ciphertext Attack *****")
+
+    try:
+
+      args=input("\n\t\tArguments ([-h] -n N -e E -c C):\n\n\t\t\t").split()
+
+    except:
+
+      print("\n\t\t\tArgument Error: Please verify your inputs\n")
+      exit()
+
+    args=' '.join([str(i) for i in args])
+
+    subprocess.call(["Attacks/Chosen_Ciphertext/chocip.py "+args], shell=True)
+
+  elif attack == "7":
+
     print("\n\t\t\t ***** Parameters extraction *****")
 
     try:
@@ -151,7 +169,7 @@ def choose(arg):
 
     subprocess.call(["Attacks/Other/Extractor/extractor.py "+args], shell=True)
 
-  elif attack== "7":
+  elif attack== "8":
 
     print("\n\t\t\t ***** RSA Private Key constructor *****")
 
