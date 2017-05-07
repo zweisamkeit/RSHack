@@ -134,6 +134,6 @@ if __name__ == "__main__":
 
   print ("\tPrivate exponent:",d,"\n")
 
-  key = Crypto.PublicKey.RSA.construct((n,args.e,args.d))
+  key = Crypto.PublicKey.RSA.construct((args.n,args.e,d))
 
   print("\tPrivate key: \n\n",Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8'),"\n")
