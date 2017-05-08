@@ -112,9 +112,16 @@ if __name__ == "__main__" :
 
   # On détermine la factorisation du module n
 
-  (p, q) = fermat(args.n)
+  try:
 
-  print("\n\t[+] Factorization:",p,"*",q,"\n")
+    (p, q) = fermat(args.n)
+ 
+  except:
+
+    print("\t[-] This RSA public isn't a valide candidate for a Fermat Attack\n")
+    exit()
+
+  print("\n\t[+] Factorization:{} * {}\n".format(p,q))
 
   # On calcule l'indicatrice d'Euler pour reconstruire l'exposant privé d
 
@@ -122,7 +129,7 @@ if __name__ == "__main__" :
 
   d = inv_modulo(args.e, phi)
 
-  print("\t[+] Private exponent:",d,"\n")
+  print("\t[+] Private exponent: {}\n".format(d))
 
   # Reconstruction de la clé privée
 
