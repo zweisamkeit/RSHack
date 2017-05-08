@@ -35,11 +35,11 @@ def accueil(arg):
     print("\t\tc. RSA Ciphertext Decipher")
     print("\t\td. RSA Ciphertext Encipher")
 
-    return(input("\n\tWhat attack or tool do you want to carry out? "))
+    return(input("\n\t[*] What attack or tool do you want to carry out? "))
 
   elif arg == "again":
 
-    return(input("\n\tPlease enter the number of the attack you want to carry out: "))
+    return(input("\n\t[*] Please enter the number of the attack you want to carry out: "))
 
 def choose(arg):
 
@@ -51,7 +51,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -67,7 +67,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArguments ([-h] -k0 path_to_key0 -k1 path_to_key1 -k2 path_to_key2 -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Arguments ([-h] -k0 path_to_key0 -k1 path_to_key1 -k2 path_to_key2 -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
 
       if (args[0] != '-h'):
 
@@ -92,7 +92,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -108,7 +108,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments ([-h] -n modulus -e exponent -c ciphertext --host hostname -p port --error error padding message):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent -c ciphertext --host hostname -p port --error error padding message):\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -124,7 +124,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\t Arguments [-h] -n common modulus -e1 first exponent -e2 second exponent -c1 first cipher -c2 second cipher:\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Arguments [-h] -n common modulus -e1 first exponent -e2 second exponent -c1 first cipher -c2 second cipher:\n\n\t\t\t").split()
       args=' '.join([str(i) for i in args])
 
     except:
@@ -140,7 +140,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArguments ([-h] -n modulus -e public_exponent -c ciphertext):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Arguments ([-h] -n modulus -e public_exponent -c ciphertext):\n\n\t\t\t").split()
 
     except:
 
@@ -157,7 +157,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArgument ([-h] -k K):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Argument ([-h] -k K):\n\n\t\t\t").split()
 
     except:
 
@@ -178,7 +178,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArgument ([-h] -p first_factorization_element -q second_factorization_element -e public_exponent):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Argument ([-h] -p first_factorization_element -q second_factorization_element -e public_exponent):\n\n\t\t\t").split()
 
     except:
 
@@ -195,7 +195,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArgument ([-h] -n modulus -d private_exponent -c ciphertext):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Argument ([-h] -n modulus -d private_exponent -c ciphertext):\n\n\t\t\t").split()
 
     except:
 
@@ -212,7 +212,7 @@ def choose(arg):
 
     try:
 
-      args=input("\n\t\tArgument ([-h] -n modulus -e public_exponent -p plaintext):\n\n\t\t\t").split()
+      args=input("\n\t\t[*] Argument ([-h] -n modulus -e public_exponent -p plaintext):\n\n\t\t\t").split()
 
     except:
 

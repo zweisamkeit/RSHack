@@ -39,9 +39,9 @@ if __name__ == "__main__" :
 
   c_bis = c * pow(2,e,n) % n
 
-  print("\tPlease send the following ciphertext to the server: %i\n"%c_bis)
+  print("\t[*] Please send the following ciphertext to the server: %i\n"%c_bis)
 
-  out = input("\tWhat's the result? ")
+  out = input("\t[*] What's the result? ")
 
   p = out / 2
 
