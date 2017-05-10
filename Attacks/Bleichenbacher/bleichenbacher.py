@@ -200,7 +200,16 @@ def Iteration(si,M):
     if (a==b): # Si l'amplitude de l'unique intervalle est nulle, on a le plaintext
       print "\t[+] Construction and narrowing the sets done.\n"
       plaintext = (a * Inv_mod(s0,n)) % n
-      print "\t[+] The plaintext is: \n\n", hex(plaintext)[3:].replace('L','').decode('hex') # Renvoie le plaintext
+      print "\tTha plaintext is: {}\n".format(plaintext)
+
+      try:
+
+        print "\t[+] The interpreted plaintext is: {}\n\n".format(hex(plaintext)[3:].replace('L','').decode('hex')) # Renvoie le plaintext
+
+      except:
+
+        print "\t[-] This plaintext is uninterpretable\n"
+
       print "\n\t[+] Attack done.\n"
       sock.close()
       print "\t[+] Connection closed.\n"

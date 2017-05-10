@@ -132,8 +132,8 @@ if __name__ == "__main__":
 
   d = wiener(args.n, args.e)
 
-  print ("\t[+] Private exponent:",d,"\n")
+  print ("\t[+] Private exponent: {}\n".format(d))
 
   key = Crypto.PublicKey.RSA.construct((args.n,args.e,d))
 
-  print("\t[+] Private key: \n\n",Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8'),"\n")
+  print("\t[+] Private key: \n\n{}\n".format(Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8')))

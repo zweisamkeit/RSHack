@@ -39,19 +39,19 @@ if __name__ == "__main__" :
 
   c_bis = c * pow(2,e,n) % n
 
-  print("\t[*] Please send the following ciphertext to the server: %i\n"%c_bis)
+  print("\t[*] Please send the following ciphertext to the server: {}\n".format(c_bis))
 
   out = input("\t[*] What's the result? ")
 
   p = out / 2
 
-  print("\t[+] The plaintext is: %i\n" % p)
+  print("\t[+] The plaintext is: {}\n".format(p))
 
   try:
 
     p_text = hex(p)[2:].replace('L','').decode('hex')
 
-    print("\t[+] The interpreted plaintext: %s\n" % p_text)
+    print("\n\t[+] The interpreted plaintext: {}\n".format(p_text))
 
   except:
 

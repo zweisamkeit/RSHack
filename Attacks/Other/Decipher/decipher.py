@@ -36,13 +36,13 @@ if __name__ == "__main__" :
 
   p = pow(c,d,n)
 
-  print("\t[+] The plaintext is: %i\n" % p)
+  print("\t[+] The plaintext is: {}\n".format(p))
 
   try:
 
     p_text = hex(p)[2:].replace('L','').decode('hex')
 
-    print("\t[+] The interpreted plaintext: %s\n" % p_text)
+    print("\t[+] The interpreted plaintext: {}\n".format(p_text))
 
   except:
 

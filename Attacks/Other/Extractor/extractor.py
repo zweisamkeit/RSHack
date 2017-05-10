@@ -37,6 +37,6 @@ if __name__ == "__main__" :
 
   n,e = key.n, key.e
 
-  print("\n\t[+] Modulus: "+str(n))
+  print("\n\t[+] Modulus: {}".format(str(n)))
   
-  print("\n\t[+] Exponent: "+str(e))
+  print("\n\t[+] Exponent: {}".format(str(e)))

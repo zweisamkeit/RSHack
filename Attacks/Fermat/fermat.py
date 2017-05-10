@@ -118,7 +118,7 @@ if __name__ == "__main__" :
  
   except:
 
-    print("\t[-] This RSA public isn't a valide candidate for a Fermat Attack\n")
+    print("\n\t[-] This RSA public key isn't a valide candidate for a Fermat Attack\n")
     exit()
 
   print("\n\t[+] Factorization:{} * {}\n".format(p,q))

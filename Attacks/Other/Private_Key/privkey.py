@@ -60,9 +60,9 @@ if __name__ == "__main__" :
   phi = (p-1)*(q-1)
   d = inv_modulo(e,phi)
 
-  print("\tn,p,q,e,d=",n,p,q,e,d,"\n")
+  print("\tn,p,q,e,d={}, {}, {}, {}, {}\n".format(n,p,q,e,d))
 
   key = RSA.construct((n,e,d,p,q))
 
-  print("\tPrivate key: \n\n\t\t",RSA._RSAobj.exportKey(key).decode('utf-8').replace('\n','\n\t\t'),"\n")
+  print("\tPrivate key: \n\n\t\t{}\n".format(RSA._RSAobj.exportKey(key).decode('utf-8').replace('\n','\n\t\t')))
 

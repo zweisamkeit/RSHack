@@ -91,4 +91,4 @@ if __name__ == "__main__" :
 
   print("\t[+] Solution interpretation done")
 
-  print("\n\t\t[+] The plaintext is: "+p.replace('\n','\n\t\t'))
+  print("\n\t\t[+] The plaintext is: {}".format(p.replace('\n','\n\t\t')))
