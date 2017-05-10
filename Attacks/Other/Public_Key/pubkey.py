@@ -39,5 +39,5 @@ if __name__ == "__main__" :
 
   key = rsaobj.exportKey()
 
-  print(key.decode('utf-8'))
+  print("The corresponding RSA public key is : \n\n\t\t{}\n".format(key.decode('utf-8').replace('\n','\n\t\t')))
 
