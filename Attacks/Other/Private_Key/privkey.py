@@ -51,10 +51,11 @@ if __name__ == "__main__" :
   parser.add_argument('-p', dest='p',type=int,help='first element of the modulus factorization',required=True)
   parser.add_argument('-q', dest='q',type=int,help='second element of the modulus factorization',required=True)
   parser.add_argument('-e', dest='e',type=int,help='public exponent',required=True)
+  parser.add_argument('-o',dest='output',type=str,help='output file')
 
   args = parser.parse_args()
 
-  p,q,e = args.p,args.q,args.e
+  p,q,e,output = args.p,args.q,args.e,args.output
 
   n = p*q
   phi = (p-1)*(q-1)
@@ -64,5 +65,16 @@ if __name__ == "__main__" :
 
   key = RSA.construct((n,e,d,p,q))
 
-  print("\tPrivate key: \n\n\t\t{}\n".format(RSA._RSAobj.exportKey(key).decode('utf-8').replace('\n','\n\t\t')))
+  key = RSA._RSAobj.exportKey(key).decode('utf-8')
 
+  print("\tPrivate key: \n\n\t\t{}\n".format(key.replace('\n','\n\t\t')))
+
+  if output is not None:
+
+    out = open(output,'w+')
+
+    out.write(key)
+
+    out.close()
+
+    print("\tThe key has been saved in {}\n".format(output))

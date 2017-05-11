@@ -30,14 +30,24 @@ if __name__ == "__main__" :
 
   parser.add_argument('-n', dest='n',type=int,help='modulus',required=True)
   parser.add_argument('-e', dest='e',type=int,help='public exponent',required=True)
+  parser.add_argument('-o',dest='o',type=str,help='output file')
 
   args = parser.parse_args()
 
-  n,e = args.n,args.e
+  n,e,output = args.n,args.e,args.o
 
   rsaobj = RSA.construct((n,e))
 
-  key = rsaobj.exportKey()
+  key = rsaobj.exportKey().decode('utf-8')
 
-  print("The corresponding RSA public key is : \n\n\t\t{}\n".format(key.decode('utf-8').replace('\n','\n\t\t')))
+  print("\tThe corresponding RSA public key is : \n\n\t\t{}\n".format(key.replace('\n','\n\t\t')))
 
+  if output is not None:
+
+    out = open(output,'w+')
+
+    out.write(key)
+
+    out.close()
+
+    print("\tThe key has been saved in {}\n".format(output))

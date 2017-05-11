@@ -33,8 +33,8 @@ def accueil(arg):
 		print("\t\t6. Chosen Plaintext Attack")
 		print("\n\tList of the available tools:\n")
 		print("\t\ta. RSA Public Key parameters extraction")
-		print("\t\tb. RSA Private Key construction")
-		print("\t\tc. RSA Public Key construction")
+		print("\t\tb. RSA Private Key construction (PEM)")
+		print("\t\tc. RSA Public Key construction (PEM)")
 		print("\t\td. RSA Ciphertext Decipher")
 		print("\t\te. RSA Ciphertext Encipher")
 
@@ -72,7 +72,7 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Arguments ([-h] -k0 path_to_key0 -k1 path_to_key1 -k2 path_to_key2 -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
+			args = input("\n\t\t[*] Arguments ([-h] -k0 path_to_key0.pem -k1 path_to_key1.pem -k2 path_to_key2.pem -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
 
 			if args[0] != '-h':
 
@@ -183,7 +183,7 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Argument ([-h] -p first_factorization_element -q second_factorization_element -e public_exponent):\n\n\t\t\t").split()
+			args = input("\n\t\t[*] Argument ([-h] -p first_factorization_element -q second_factorization_element -e public_exponent [-o output_file]):\n\n\t\t\t").split()
 
 		except:
 
@@ -200,7 +200,7 @@ def choose(arg):
 
                 try:
 
-                        args = input("\n\t\t[*] Argument ([-h] -n modulus -e public_exponent):\n\n\t\t\t").split()
+                        args = input("\n\t\t[*] Argument ([-h] -n modulus -e public_exponent [-o output_file]):\n\n\t\t\t").split()
 
                 except:
 
