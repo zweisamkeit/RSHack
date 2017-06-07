@@ -15,7 +15,7 @@
 
 * More informations: https://zweisamkeit.fr/rshack/ (fr)
 
-## Requirement
+## Requirements
 
 * GNU/Linux (All OS soon, bash comands will be replace by full python scripts)
 * Python 3
