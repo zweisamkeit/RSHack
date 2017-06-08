@@ -11,24 +11,26 @@
 	* Common Modulus Attack
 	* Chosen Plaintext Attack
 
-* It can also extract the modulus and the exponent of an RSA public key (decimal value), create an RSA Private Key using its parameters (pem format), and some other features.
+* Some other features are implented:
 
+	* RSA Public Key parameters extraction
+	* RSA Private Key construction (PEM)
+	* RSA Public Key construction (PEM)
+	* RSA Ciphertext Decipher
+	* RSA Ciphertext Encipher
+	
 * More informations: https://zweisamkeit.fr/rshack/ (fr)
 
 ## Requirements
 
 * GNU/Linux (All OS soon, bash comands will be replace by full python scripts)
-* Python 3
-
-## FAQ
-
-* How to use it?
-
-You just have to start the following command: ./rshack.py
+* Python 2.7 / 3.6
 
 ## Todo
 
+* Python 3 only
 * Replace bash commands (rshack.py) by full python scripts
-* Object Oriented Programming only
+* Object Oriented Programming only (v2.0)
 * Discrete logarithme
 * Factorisation (using sage?)
+* GUI? (v3.0)
