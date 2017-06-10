@@ -9,18 +9,46 @@
 import sys
 import argparse
 
-# Accueil
+class Chopla(object):
 
-def accueil():
+  # Accueil
 
-  print ("\n")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t\t Chosen Plaintext Attack ")
-  print ("\t\t       Zweisamkeit       ")
-  print ("\t\t    GNU GPL v3 License   ")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\n")
+  def accueil(self):
 
+    print ("\n")
+    print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\t\t Chosen Plaintext Attack ")
+    print ("\t\t       Zweisamkeit       ")
+    print ("\t\t    GNU GPL v3 License   ")
+    print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
+
+  def __init__(self, n, e, c):
+
+    self.accueil()
+
+    c_bis = c * pow(2,e,n) % n
+
+    print("\t[*] Please send the following ciphertext to the server: {}\n".format(c_bis))
+
+    out = input("\t[*] What's the result? ")
+
+    p = out / 2
+
+    print("\t[+] The plaintext is: {}\n".format(p))
+
+    try:
+
+      p_text = hex(p)[2:].replace('L','').decode('hex')
+
+      print("\n\t[+] The interpreted plaintext: {}\n".format(p_text))
+
+    except:
+
+      print("\t[-] The plaintext is not interpretable\n")
+
+
+"""
 
 if __name__ == "__main__" :
 
@@ -56,3 +84,4 @@ if __name__ == "__main__" :
   except:
 
     print("\t[-] The plaintext is not interpretable\n")
+"""

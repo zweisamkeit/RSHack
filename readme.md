@@ -29,8 +29,4 @@
 ## Todo
 
 * Python 3 only
-* Replace bash commands (rshack.py) by full python scripts
-* Object Oriented Programming only (v2.0)
-* Discrete logarithme
-* Factorisation (using sage?)
 * GUI? (v3.0)

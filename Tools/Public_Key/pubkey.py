@@ -10,18 +10,39 @@ import sys
 import argparse
 from Crypto.PublicKey import RSA
 
-# Accueil
+class PubkeyConstruct(object):
 
-def accueil():
+  # Accueil
 
-  print ("\n")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t  Public Key Constructor ")
-  print ("\t       Zweisamkeit       ")
-  print ("\t    GNU GPL v3 License   ")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\n")
+  def accueil():
 
+    print ("\n")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\t  Public Key Constructor ")
+    print ("\t       Zweisamkeit       ")
+    print ("\t    GNU GPL v3 License   ")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
+
+  def __init__(self, n, e, o):
+
+    rsaobj = RSA.construct((long(n),long(e)))
+
+    key = rsaobj.exportKey().decode('utf-8')
+
+    print("\tThe corresponding RSA public key is : \n\n\t\t{}\n".format(key.replace('\n','\n\t\t')))
+
+    if o is not None: # Bug to fix right here
+
+      out = open(o,'w+')
+
+      out.write(key)
+
+      out.close()
+
+      print("\tThe key has been saved in {}\n".format(output))
+
+"""
 if __name__ == "__main__" :
 
   accueil()
@@ -51,3 +72,4 @@ if __name__ == "__main__" :
     out.close()
 
     print("\tThe key has been saved in {}\n".format(output))
+"""

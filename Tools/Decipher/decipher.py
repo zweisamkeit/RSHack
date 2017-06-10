@@ -9,18 +9,37 @@
 import sys
 import argparse
 
-# Accueil
+class Decipher(object):
 
-def accueil():
+  # Accueil
 
-  print ("\n")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t\t      RSA Decipher       ")
-  print ("\t\t       Zweisamkeit       ")
-  print ("\t\t    GNU GPL v3 License   ")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\n")
+  def accueil():
 
+    print ("\n")
+    print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\t\t      RSA Decipher       ")
+    print ("\t\t       Zweisamkeit       ")
+    print ("\t\t    GNU GPL v3 License   ")
+    print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
+
+  def __init__(self, n, d, c):
+
+    p = pow(c,d,n)
+
+    print("\t[+] The plaintext is: {}\n".format(p))
+
+    try:
+
+      p_text = hex(p)[2:].replace('L','').decode('hex')
+
+      print("\t[+] The interpreted plaintext: {}\n".format(p_text))
+
+    except:
+
+      print("\t[-] This plaintext is uninterpretable\n")
+
+"""
 if __name__ == "__main__" :
 
   accueil()
@@ -47,3 +66,4 @@ if __name__ == "__main__" :
   except:
 
     print("\t[-] This plaintext is uninterpretable\n")
+"""

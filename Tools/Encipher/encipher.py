@@ -9,21 +9,30 @@
 import sys
 import argparse
 
-# Accueil
+class Encipher(object):
 
-def accueil():
+  # Accueil
 
-  print ("\n")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t\t      RSA Encipher       ")
-  print ("\t\t       Zweisamkeit       ")
-  print ("\t\t    GNU GPL v3 License   ")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\n")
+  def accueil(self):
 
+    print ("\n")
+    print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\t\t      RSA Encipher       ")
+    print ("\t\t       Zweisamkeit       ")
+    print ("\t\t    GNU GPL v3 License   ")
+    print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
+
+  def __init__(self,n,e,p):
+
+    c = pow(p,e,n)
+
+    print("\t[+] The ciphertext is: {}\n".format(c))
+    
+"""
 if __name__ == "__main__" :
 
-  accueil()
+  self.accueil()
 
   parser = argparse.ArgumentParser(description='This simple program allows to encipher a message using RSA')
   parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus',required=True)
@@ -37,3 +46,4 @@ if __name__ == "__main__" :
   c = pow(p,e,n)
 
   print("\t[+] The ciphertext is: {}\n".format(c))
+"""

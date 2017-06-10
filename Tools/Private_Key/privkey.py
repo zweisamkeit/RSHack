@@ -10,38 +10,64 @@ import sys
 import argparse
 from Crypto.PublicKey import RSA
 
-# Accueil
+class PrivkeyConstruct(object):
 
-def accueil():
+  # Accueil
 
-  print ("\n")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t Private Key Constructor ")
-  print ("\t       Zweisamkeit       ")
-  print ("\t    GNU GPL v3 License   ")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\n")
+  def accueil(self):
 
-def bezout(a, b):
+    print ("\n")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\t Private Key Constructor ")
+    print ("\t       Zweisamkeit       ")
+    print ("\t    GNU GPL v3 License   ")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
 
-    if a == 0 and b == 0:
+  def bezout(self, a, b):
 
-      return (0, 0, 0)
+      if a == 0 and b == 0:
 
-    if b == 0:
+        return (0, 0, 0)
 
-      return (a // abs(a), 0, abs(a))
+      if b == 0:
 
-    (u, v, p) = bezout(b, a % b)
+        return (a // abs(a), 0, abs(a))
 
-    return (v, (u - v * (a // b)), p)
+      (u, v, p) = self.bezout(b, a % b)
 
-def inv_modulo(x, m):
+      return (v, (u - v * (a // b)), p)
 
-  (u, _, p) = bezout(x, m)
+  def inv_modulo(self, x, m):
 
-  return (u % abs(m))
+    (u, _, p) = self.bezout(x, m)
 
+    return (u % abs(m))
+
+  def __init__(self, p, q, e, o = None):
+
+    n = p*q
+    phi = (p-1)*(q-1)
+    d = self.inv_modulo(e,phi)
+
+    print("\tn,p,q,e,d={}, {}, {}, {}, {}\n".format(n,p,q,e,d))
+
+    key = RSA.construct((long(n),long(e),long(d),long(p),long(q)))
+
+    key = RSA._RSAobj.exportKey(key).decode('utf-8')
+
+    print("\tPrivate key: \n\n\t\t{}\n".format(key.replace('\n','\n\t\t')))
+
+    if o is not None: # Bug to fix right here
+
+      out = open(o,'w+')
+
+      out.write(key)
+
+      out.close()
+
+      print("\tThe key has been saved in {}\n".format(output))
+"""
 if __name__ == "__main__" :
 
   accueil()
@@ -78,3 +104,4 @@ if __name__ == "__main__" :
     out.close()
 
     print("\tThe key has been saved in {}\n".format(output))
+"""

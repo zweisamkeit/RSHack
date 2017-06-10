@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # RSA extractor
@@ -9,18 +9,31 @@
 import argparse
 from Crypto.PublicKey import RSA
 
-# Accueil
+class Extractor(object):
 
-def accueil():
+  # Accueil
 
-  print ("\n")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t      RSA Extractor      ")
-  print ("\t       Zweisamkeit       ")
-  print ("\t    GNU GPL v3 License   ")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\n")
+  def accueil():
 
+    print ("\n")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\t      RSA Extractor      ")
+    print ("\t       Zweisamkeit       ")
+    print ("\t    GNU GPL v3 License   ")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
+
+  def __init__(self, k):
+
+    key=RSA.importKey(open(k, 'r'))
+
+    n,e = key.n, key.e
+
+    print("\n\t[+] Modulus: {}".format(str(n)))
+  
+    print("\n\t[+] Exponent: {}".format(str(e)))
+
+"""
 if __name__ == "__main__" :
 
   accueil()
@@ -40,3 +53,4 @@ if __name__ == "__main__" :
   print("\n\t[+] Modulus: {}".format(str(n)))
   
   print("\n\t[+] Exponent: {}".format(str(e)))
+"""

@@ -13,90 +13,121 @@ import fractions
 import random
 import argparse
 
-# Accueil
+class Fermat(object):
 
-def accueil():
+    # Accueil
 
-  print ("\n")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t\t      Fermat Attack      ")
-  print ("\t\t       Zweisamkeit       ")
-  print ("\t\t    GNU GPL v3 License   ")
-  print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-print ("\n")
+    def accueil(self):
 
-def carre_parfait(x):
+      print ("\n")
+      print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+      print ("\t\t      Fermat Attack      ")
+      print ("\t\t       Zweisamkeit       ")
+      print ("\t\t    GNU GPL v3 License   ")
+      print ("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
 
-  if x < 1:
- 
-    return(False)
+    def carre_parfait(self, x):
 
-  sqrt_x = math.sqrt(x)
+      if x < 1:
 
-  return (sqrt_x == int(math.floor(sqrt_x)))
+        return(False)
 
-# Factorisation de Fermat
+      sqrt_x = math.sqrt(x)
 
-def fermat(n):
+      return (sqrt_x == int(math.floor(sqrt_x)))
 
-  a = 2*math.ceil(math.sqrt(n)) + 1
+    # Factorisation de Fermat
 
-  aux = 2 * a +1 # Conservation de la valeur pour l'optimisation des calculs
+    def fermat(self,n):
 
-  n4 = 4 * n
+      a = 2*math.ceil(math.sqrt(n)) + 1
 
-  # On incrémente a jusqu'à ce que a² - N soit un carré parfait
+      aux = 2 * a +1 # Conservation de la valeur pour l'optimisation des calculs
 
-  c = pow(a, 2) - n4
+      n4 = 4 * n
 
-  while not carre_parfait(c):
+      # On incrémente a jusqu'à ce que a² - N soit un carré parfait
 
-    c += aux
+      c = pow(a, 2) - n4
 
-    a += 1
+      while not carre_parfait(c):
 
-    aux += 2
+        c += aux
 
-  b = int(math.sqrt(c))
+        a += 1
 
-  p = (a - b) // 2
+        aux += 2
 
-  q = (a + b) // 2
+      b = int(math.sqrt(c))
 
-  if (p*q != n):
- 
-    print("Error!")
-    exit(0)
+      p = (a - b) // 2
 
-  return (p, q)
+      q = (a + b) // 2
 
-# Calcul de l'indicatrice d'euler du module n = pq
+      if (p*q != n):
 
-def indicatrice_euler(p, q):
+        print("Error!")
+        exit(0)
 
-  return((p - 1) * (q - 1))
+      return (p, q)
 
-# Inverse modulaire 
+    # Calcul de l'indicatrice d'euler du module n = pq
 
-def bezout(a, b):
+    def indicatrice_euler(self, p, q):
 
-    if a == 0 and b == 0:
+      return((p - 1) * (q - 1))
 
-      return (0, 0, 0)
+    # Inverse modulaire
 
-    if b == 0:
+    def bezout(self, a, b):
 
-      return (a // abs(a), 0, abs(a))
+        if a == 0 and b == 0:
 
-    (u, v, p) = bezout(b, a % b)
+          return (0, 0, 0)
 
-    return (v, (u - v * (a // b)), p)
- 
-def inv_modulo(x, m):
+        if b == 0:
 
-  (u, _, p) = bezout(x, m)
+          return (a // abs(a), 0, abs(a))
 
-  return u % abs(m)
+        (u, v, p) = self.bezout(b, a % b)
+
+        return (v, (u - v * (a // b)), p)
+
+    def inv_modulo(self, x, m):
+
+      (u, _, p) = self.bezout(x, m)
+
+      return u % abs(m)
+
+    # Main pour RSHack
+
+    def __init__(self, n, e):
+
+        self.accueil()
+
+        try:
+
+            (p, q) = self.fermat(n, e)
+
+        except:
+
+            print("\n\t[-] This RSA public key isn't a valide candidate for a Fermat Attack\n")
+            exit()
+
+        print("\n\t[+] Factorization:{} * {}\n".format(p,q))
+
+        # On calcule l'indicatrice d'Euler pour reconstruire l'exposant privé d
+
+        phi = indicatrice_euler(p,q)
+
+        self.d = inv_modulo(e, phi)
+
+        print("\t[+] Private exponent: {}\n".format(d))
+
+
+
+"""
 
 # Main
 
@@ -115,7 +146,7 @@ if __name__ == "__main__" :
   try:
 
     (p, q) = fermat(args.n)
- 
+
   except:
 
     print("\n\t[-] This RSA public key isn't a valide candidate for a Fermat Attack\n")
@@ -133,6 +164,7 @@ if __name__ == "__main__" :
 
   # Reconstruction de la clé privée
 
-  key = Crypto.PublicKey.RSA.construct((args.n,args.e,d,p,q))  
+  key = Crypto.PublicKey.RSA.construct((args.n,args.e,d,p,q))
 
   print("\t[+] Private key: \n\n\t\t",Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8').replace('\n','\n\t\t'),"\n")
+"""

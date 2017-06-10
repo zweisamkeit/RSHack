@@ -9,131 +9,144 @@
 import sys
 import random
 import Crypto.PublicKey.RSA
-import argparse
+#import argparse
 
-# Accueil
+class Wiener(object):
 
-def accueil():
+    # Accueil
 
-  print ("\n")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\t      Wiener Attack      ")
-  print ("\t       Zweisamkeit       ")
-  print ("\t    GNU GPL v3 License   ")
-  print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-  print ("\n")
+    def accueil(self):
 
-# Retourne le couple (q,r) de la division euclidienne a = bq + r
+      print ("\n")
+      print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+      print ("\t      Wiener Attack      ")
+      print ("\t       Zweisamkeit       ")
+      print ("\t    GNU GPL v3 License   ")
+      print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+      print ("\n")
 
-def division_euclidienne(a, b):
+    # Retourne le couple (q,r) de la division euclidienne a = bq + r
 
-  return (a // b, a % b)
+    def division_euclidienne(self, a, b):
 
-# Retourne le développement en fraction continue du nombre rationnel n/d
+      return (a // b, a % b)
 
-def fraction_continue(n, d):
+    # Retourne le développement en fraction continue du nombre rationnel n/d
 
-  developpement = []
-  a = n
-  b = d
+    def fraction_continue(self, n, d):
 
-  while b != 0:
+      developpement = []
+      a = n
+      b = d
 
-    (q,r) = division_euclidienne(a,b)
+      while b != 0:
 
-    developpement.append(q)
+        (q,r) = self.division_euclidienne(a,b)
 
-    a = b
-    b = r
+        developpement.append(q)
 
-  return (developpement)
+        a = b
+        b = r
 
-# Renvoie les réduites d'une fraction continue a
+      return (developpement)
 
-def reduites_fraction_continue(a):
+    # Renvoie les réduites d'une fraction continue a
 
-  l=len(a)
-  
-  # Initialisation des sous-suites
+    def reduites_fraction_continue(self, a):
 
-  reduites=[]
+      l=len(a)
 
-  h0 = 1
-  h1 = 0
-  k0 = 0
-  k1 = 1
+      # Initialisation des sous-suites
 
-  count = 0
+      reduites=[]
 
-  # Construction des réduites
+      h0 = 1
+      h1 = 0
+      k0 = 0
+      k1 = 1
 
-  while count < l:
+      count = 0
 
-    h = a[count] * h1 + h0
-    h0 = h1
-    h1 = h
+      # Construction des réduites
 
-    k = a[count] * k1 + k0
-    k0 = k1
-    k1 = k
+      while count < l:
 
-    reduites.append((k,h))
-    
-    count += 1
+        h = a[count] * h1 + h0
+        h0 = h1
+        h1 = h
 
-  return (reduites)
+        k = a[count] * k1 + k0
+        k0 = k1
+        k1 = k
 
-# Attaque de Wiener 
+        reduites.append((k,h))
 
-def wiener(n, e):
+        count += 1
 
-  # Décomposition de e/n en fraction continue
+      return (reduites)
 
-  fc = fraction_continue(e, n)
+    # Attaque de Wiener
 
-  # Calcul des réduites de la fraction continue
+    def wiener(self, n, e):
 
-  reduites = reduites_fraction_continue(fc)
+      # Décomposition de e/n en fraction continue
 
-  # Recherche de la clé privée parmi les dénominateurs des réduites
+      fc = self.fraction_continue(e, n)
 
-  message_clair = random.randint(10**1,10**5)
+      # Calcul des réduites de la fraction continue
 
-  message_chiffre = pow(message_clair, e, n)
+      reduites = self.reduites_fraction_continue(fc)
 
-  l = len(reduites)
+      # Recherche de la clé privée parmi les dénominateurs des réduites
 
-  i = 0
+      message_clair = random.randint(10**1,10**5)
 
-  while i < l and pow(message_chiffre, reduites[i][1], n) != message_clair:
-  
-    i += 1
-  
-  if i != l:
-  
-    return (reduites[i][1])
-    
-  else:
+      message_chiffre = pow(message_clair, e, n)
 
-    print("\t[-] This RSA public key isn't a valid candidate to a Wiener Attack\n")
-    exit(0)
+      l = len(reduites)
 
-# Main (Pour une fois que j'en fais un... :))
+      i = 0
 
-if __name__ == "__main__":
+      while i < l and pow(message_chiffre, reduites[i][1], n) != message_clair:
 
-  accueil()
+        i += 1
 
-  parser = argparse.ArgumentParser(description='This program allows to carry out a Wiener Attack')
-  parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus',required=True)
-  parser.add_argument('-e', dest='e',type=int,help='RSA public key exponent',required=True)
+      if i != l:
 
-  args=parser.parse_args()
+        return (reduites[i][1])
 
-  d = wiener(args.n, args.e)
+      else:
 
-  print ("\t[+] Private exponent: {}\n".format(d))
+        print("\t[-] This RSA public key isn't a valid candidate to a Wiener Attack\n")
+        exit(0)
 
-  key = Crypto.PublicKey.RSA.construct((args.n,args.e,d))
+    # Main pour RSHack
 
-  print("\t[+] Private key: \n\n{}\n".format(Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8')))
+    def __init__(self, n, e):
+
+        self.accueil()
+
+        self.d = self.wiener(n, e)
+
+        print ("\t[+] Private exponent: {}\n".format(self.d))
+
+    # Main (Pour une fois que j'en fais un... :))
+
+    """if __name__ == "__main__":
+
+      accueil()
+
+      parser = argparse.ArgumentParser(description='This program allows to carry out a Wiener Attack')
+      parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus',required=True)
+      parser.add_argument('-e', dest='e',type=int,help='RSA public key exponent',required=True)
+
+      args=parser.parse_args()
+
+      d = wiener(args.n, args.e)
+
+      print ("\t[+] Private exponent: {}\n".format(d))
+
+      key = Crypto.PublicKey.RSA.construct((args.n,args.e,d))
+
+      print("\t[+] Private key: \n\n{}\n".format(Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8')))
+      """
