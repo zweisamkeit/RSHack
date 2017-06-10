@@ -226,12 +226,12 @@ class Bleichenbacher(object):
     print "\tConstruction et affinage des encadrements en cours..."
 
     si = self.Exces(n,3*B) # On initialise si
-    si = self.Recherche(sock, si) # On cherche le premier si valable
+    si = self.Recherche(si) # On cherche le premier si valable
     #print "si initial trouvé : ",si
-    M = self.Affinage(sock, si,B2,B3-1)
+    M = self.Affinage(si,B2,B3-1)
     #print "M initial trouvé : ", M # Étape 3
 
-    self.Iteration(sock,si,M)
+    self.Iteration(si,M)
 
 # Déroulement global de l'attaque :
 
