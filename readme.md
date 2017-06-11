@@ -24,6 +24,10 @@
 ## Requirements
 
 * Python 2.7 / 3.6
+	
+	* System: sys / subprocess / os / argparse
+	* Maths: Crypto / gmpy2 / math / fractions / random
+	* Network: sock
 
 ## Todo
 
