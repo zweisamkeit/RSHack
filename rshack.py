@@ -7,8 +7,8 @@ import argparse
 
 from subprocess import call
 
-from attacks import *
-from tools import *
+from attacks import Attack
+from tools import Tool
 
 # Accueil
 

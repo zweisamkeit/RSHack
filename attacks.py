@@ -7,6 +7,8 @@ import argparse
 
 import Crypto
 
+import sys
+
 class Attack(object):
 
 	def __init__(self, args):
