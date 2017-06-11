@@ -1,8 +1,10 @@
 # RSHack for CTF
 
+RSHack is a tool written in python which allows to carry out some attacks on RSA, and offer a few tools to manipulate RSA keys.
+
 ## About
 
-* This tool written in python allows to carry out one of the available attacks on RSA in this repository:
+* Attacks:
 
 	* Wiener Attack
 	* Hastad Attack
@@ -11,7 +13,7 @@
 	* Common Modulus Attack
 	* Chosen Plaintext Attack
 
-* Some other features are implented:
+* Tools:
 
 	* RSA Public Key parameters extraction
 	* RSA Private Key construction (PEM)
@@ -20,6 +22,10 @@
 	* RSA Ciphertext Encipher
 	
 * More informations: https://zweisamkeit.fr/rshack/ (fr)
+
+## Usage
+
+* ```./rshack.py```
 
 ## Requirements
 
@@ -72,3 +78,8 @@
 	[*] What attack or tool do you want to carry out?
 
 ```
+
+## Credits
+
+* PyCrypto
+* Gmpy2
