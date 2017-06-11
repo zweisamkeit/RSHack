@@ -23,10 +23,19 @@
 
 ## Requirements
 
-* GNU/Linux (All OS soon, bash comands will be replace by full python scripts)
 * Python 2.7 / 3.6
 
 ## Todo
 
+* More attacks (Discrete logarithm, factorization...)
 * Python 3 only
 * GUI? (v3.0)
+
+# Releases
+
+* Version 2.0 - Saturday, 10 June 2017
+
+	* full POO
+	* Multiplateform
+
+
