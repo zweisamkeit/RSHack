@@ -35,11 +35,41 @@
 * Python 3 only
 * GUI? (v3.0)
 
-# Releases
+## Releases
 
 * Version 2.0 - Saturday, 10 June 2017
 
 	* full POO
 	* Multiplateform
 
+## Overview
 
+```
+		~~~~~~~~~~~~~~~~~~~~~~~~~
+		       RSHack v2.0
+		       Zweisamkeit
+		        GNU GPL v3
+		~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+	List of the available attacks:
+
+		1. Wiener Attack
+		2. Hastad Attack
+		3. Fermat Attack
+		4. Bleichenbacher Attack
+		5. Common Modulus Attack
+		6. Chosen Plaintext Attack
+
+	List of the available tools:
+
+		a. RSA Public Key parameters extraction
+		b. RSA Private Key construction (PEM)
+		c. RSA Public Key construction (PEM)
+		d. RSA Ciphertext Decipher
+		e. RSA Ciphertext Encipher
+
+	[*] What attack or tool do you want to carry out?
+
+```
