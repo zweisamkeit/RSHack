@@ -1,11 +1,11 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
-import sys
-
 from os import getcwd
 
 import argparse
+
+from subprocess import call
 
 from attacks import *
 from tools import *
@@ -16,7 +16,7 @@ def accueil(arg):
 
 	if arg == "first":
 
-		subprocess.call(["clear"], shell=True)
+		call(["clear"], shell=True)
 
 		print("\n")
 		print("\t\t~~~~~~~~~~~~~~~~~~~~~~~~~")

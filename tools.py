@@ -1,15 +1,11 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
-import sys
-
 from os import getcwd
 
 import argparse
 
 import Crypto
-
-import subprocess
 
 class Tool(object):
 
