@@ -2,7 +2,7 @@
 
 RSHack is a tool written in python which allows to carry out some attacks on RSA, and offer a few tools to manipulate RSA keys.
 
-## About
+## Features
 
 * Attacks:
 
