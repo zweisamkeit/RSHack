@@ -83,3 +83,13 @@ RSHack is a tool written in python which allows to carry out some attacks on RSA
 
 * PyCrypto
 * Gmpy2
+
+## Alternatives
+
+If my tool does not suit your needs, I know some great tools you'll probrably find intersting:
+
+	* [attackrsa](https://github.com/rk700/attackrsa)
+	* [rsatool](https://github.com/ius/rsatool)
+	* [CTF-Crypto](https://github.com/ValarDragon/CTF-Crypto)
+	* [cryptools](https://github.com/sonickun/cryptools)
+	* [RsaCtfTool](https://github.com/Ganapati/RsaCtfTool)
