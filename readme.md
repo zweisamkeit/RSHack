@@ -25,7 +25,10 @@ RSHack is a tool written in python which allows to carry out some attacks on RSA
 
 ## Usage
 
-* ```./rshack.py```
+```
+$ git clone https://github.com/zweisamkeit/RSHack.git
+$ ./rshack.py
+```
 
 ## Requirements
 
