@@ -31,11 +31,7 @@ class Tool(object):
 		sys.path.append(path)
 		from privkey import PrivkeyConstruct
 
-		if 'o' not in dir(self.args):
-
-			self.args.o = None
-
-                else:
+		if self.args.o is not None:
 
                         self.args.o = getcwd() + "/" + self.args.o
                         print(self.args.o)
@@ -49,11 +45,7 @@ class Tool(object):
 		sys.path.append(path)
 		from pubkey import PubkeyConstruct
 
-		if 'o' not in dir(self.args):
-
-			self.args.o = None
-
-                else:
+                if self.args.o is not None:
 
                         self.args.o = getcwd() + "/" + self.args.o
 
