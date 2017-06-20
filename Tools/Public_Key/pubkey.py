@@ -32,7 +32,9 @@ class PubkeyConstruct(object):
 
     print("\tThe corresponding RSA public key is : \n\n\t\t{}\n".format(key.replace('\n','\n\t\t')))
 
-    if o is not None: # Bug to fix right here
+    print(o)
+
+    if o is not None: 
 
       out = open(o,'w+')
 
@@ -40,7 +42,7 @@ class PubkeyConstruct(object):
 
       out.close()
 
-      print("\tThe key has been saved in {}\n".format(output))
+      print("\tThe key has been saved in {}\n".format(o))
 
 """
 if __name__ == "__main__" :

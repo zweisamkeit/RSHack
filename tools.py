@@ -35,6 +35,12 @@ class Tool(object):
 
 			self.args.o = None
 
+                else:
+
+                        self.args.o = getcwd() + "/" + self.args.o
+                        print(self.args.o)
+
+
 		pubkey = PrivkeyConstruct(self.args.p, self.args.q, self.args.e, self.args.o)
 
 	def pubkeyconstruct(self):
@@ -46,6 +52,10 @@ class Tool(object):
 		if 'o' not in dir(self.args):
 
 			self.args.o = None
+
+                else:
+
+                        self.args.o = getcwd() + "/" + self.args.o
 
 		pubkey = PubkeyConstruct(self.args.n, self.args.e, self.args.o)
 

@@ -240,7 +240,7 @@ def choose(arg):
 		parser.add_argument('-p', dest='p',type=int,help='first element of the modulus factorization',required=True)
 		parser.add_argument('-q', dest='q',type=int,help='second element of the modulus factorization',required=True)
 		parser.add_argument('-e', dest='e',type=int,help='public exponent',required=True)
-		parser.add_argument('-o',dest='output',type=str,help='output file')
+		parser.add_argument('-o',dest='o',type=str,help='output file')
 		params=parser.parse_args(args)
 
 		tool_object = Tool(params)

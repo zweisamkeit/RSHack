@@ -44,13 +44,13 @@ class PrivkeyConstruct(object):
 
     return (u % abs(m))
 
-  def __init__(self, p, q, e, o = None):
+  def __init__(self, p, q, e, o):
 
     n = p*q
     phi = (p-1)*(q-1)
     d = self.inv_modulo(e,phi)
 
-    print("\tn,p,q,e,d={}, {}, {}, {}, {}\n".format(n,p,q,e,d))
+    print("\n\tRSA Private Key Paramaters: n, p, q, e, d = {}, {}, {}, {}, {}\n".format(n,p,q,e,d))
 
     key = RSA.construct((long(n),long(e),long(d),long(p),long(q)))
 
@@ -58,7 +58,7 @@ class PrivkeyConstruct(object):
 
     print("\tPrivate key: \n\n\t\t{}\n".format(key.replace('\n','\n\t\t')))
 
-    if o is not None: # Bug to fix right here
+    if o is not None:
 
       out = open(o,'w+')
 
@@ -66,7 +66,7 @@ class PrivkeyConstruct(object):
 
       out.close()
 
-      print("\tThe key has been saved in {}\n".format(output))
+      print("\tThe key has been saved in {}\n".format(o))
 """
 if __name__ == "__main__" :
 
