@@ -33,8 +33,8 @@ class Tool(object):
 
 		if self.args.o is not None:
 
-                        self.args.o = getcwd() + "/" + self.args.o
-                        print(self.args.o)
+			self.args.o = getcwd() + "/" + self.args.o
+			print(self.args.o)
 
 
 		pubkey = PrivkeyConstruct(self.args.p, self.args.q, self.args.e, self.args.o)
@@ -44,10 +44,10 @@ class Tool(object):
 		path = getcwd() + '/Tools/Public_Key'
 		sys.path.append(path)
 		from pubkey import PubkeyConstruct
+			
+		if self.args.o is not None:
 
-                if self.args.o is not None:
-
-                        self.args.o = getcwd() + "/" + self.args.o
+			self.args.o = getcwd() + "/" + self.args.o
 
 		pubkey = PubkeyConstruct(self.args.n, self.args.e, self.args.o)
 
