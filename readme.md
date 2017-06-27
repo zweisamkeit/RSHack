@@ -15,7 +15,8 @@ RSHack is a tool written in python which allows to carry out some attacks on RSA
 
 * Tools:
 
-	* RSA Public Key parameters extraction
+	* RSA Public Key parameters extraction (PEM)
+	* RSA Private Key parameters extraction (PEM)
 	* RSA Private Key construction (PEM)
 	* RSA Public Key construction (PEM)
 	* RSA Ciphertext Decipher
@@ -55,9 +56,9 @@ $ ./rshack.py
 
 ```
 		~~~~~~~~~~~~~~~~~~~~~~~~~
-		       RSHack v2.0
-		       Zweisamkeit
-		        GNU GPL v3
+		       RSHack v2.0       
+		       Zweisamkeit       
+			GNU GPL v3       
 		~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -74,10 +75,11 @@ $ ./rshack.py
 	List of the available tools:
 
 		a. RSA Public Key parameters extraction
-		b. RSA Private Key construction (PEM)
-		c. RSA Public Key construction (PEM)
-		d. RSA Ciphertext Decipher
-		e. RSA Ciphertext Encipher
+		b. RSA Private Key parameters extraction
+		c. RSA Private Key construction (PEM)
+		d. RSA Public Key construction (PEM)
+		e. RSA Ciphertext Decipher
+		f. RSA Ciphertext Encipher
 
 	[*] What attack or tool do you want to carry out?
 
