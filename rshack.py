@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
 from os import getcwd
@@ -34,16 +34,17 @@ def accueil(arg):
 		print("\t\t6. Chosen Plaintext Attack")
 		print("\n\tList of the available tools:\n")
 		print("\t\ta. RSA Public Key parameters extraction")
-		print("\t\tb. RSA Private Key construction (PEM)")
-		print("\t\tc. RSA Public Key construction (PEM)")
-		print("\t\td. RSA Ciphertext Decipher")
-		print("\t\te. RSA Ciphertext Encipher")
+		print("\t\tb. RSA Private Key parameters extraction")
+		print("\t\tc. RSA Private Key construction (PEM)")
+		print("\t\td. RSA Public Key construction (PEM)")
+		print("\t\te. RSA Ciphertext Decipher")
+		print("\t\tf. RSA Ciphertext Encipher")
 
-		return input("\n\t[*] What attack or tool do you want to carry out? ")
+		return raw_input("\n\t[*] What attack or tool do you want to carry out? ")
 
 	elif arg == "again":
 
-		return input("\n\t[*] Please enter the number of the attack you want to carry out: ")
+		return raw_input("\n\t[*] Please enter the number of the attack you want to carry out: ")
 
 # Fonction de traitement et de lancement
 
@@ -55,7 +56,7 @@ def choose(arg):
 
 		print("\n\t\t\t ***** Wiener Attack *****")
 
-		args = input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
+		args = raw_input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
 
 		parser = argparse.ArgumentParser(description='This program allows to carry out a Wiener Attack')
 		parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus',required=True)
@@ -72,7 +73,7 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Arguments ([-h] -k0 path_to_key0.pem -k1 path_to_key1.pem -k2 path_to_key2.pem -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Arguments ([-h] -k0 path_to_key0.pem -k1 path_to_key1.pem -k2 path_to_key2.pem -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
 
 			if args[0] != '-h':
 
@@ -85,7 +86,7 @@ def choose(arg):
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This program allows to carry out an Hastad Attack')
@@ -106,11 +107,11 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This program allows to carry out a Fermat Factorization')
@@ -128,11 +129,11 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent -c ciphertext --host hostname -p port --error error padding message):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Arguments ([-h] -n modulus -e exponent -c ciphertext --host hostname -p port --error error padding message):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This program allows to carry out a Bleichenbacher Attack')
@@ -153,11 +154,11 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Arguments [-h] -n common modulus -e1 first exponent -e2 second exponent -c1 first cipher -c2 second cipher:\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Arguments [-h] -n common modulus -e1 first exponent -e2 second exponent -c1 first cipher -c2 second cipher:\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This program allows to carry out a Common Modulus Attack')
@@ -179,11 +180,11 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Arguments ([-h] -n modulus -e public_exponent -c ciphertext):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Arguments ([-h] -n modulus -e public_exponent -c ciphertext):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This program allows to carry out a Chosen Plaintext Attack')
@@ -198,40 +199,66 @@ def choose(arg):
 
 	elif attack == "a":
 
-		print("\n\t\t\t ***** Parameters extraction *****")
+		print("\n\t\t\t ***** RSA Public Key parameters extraction *****")
 
 		try:
 
-			args = input("\n\t\t[*] Argument ([-h] -k K):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Argument ([-h] -k K):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		if args[0] == '-k' and args[1]!='/':
 
 			args[1] = getcwd() + "/" + args [1]
 
-		parser = argparse.ArgumentParser(description='This program allows to extract the modulus and the exponent of an RSA public key')
+		parser = argparse.ArgumentParser(description='This program allows to extract the modulus and the exponent of an RSA public key (PEM)')
 
 		parser.add_argument('-k', dest='k',type=str,help='path of the RSA public key',required=True)
 		params=parser.parse_args(args)
 
 		tool_object = Tool(params)
-		tool_object.extractor()
+		tool_object.pubex()
 
 	elif attack == "b":
+
+		print("\n\t\t\t ***** RSA Private Key paramters extraction *****")
+
+		try:
+
+			args = raw_input("\n\t\t[*] Argument ([-h] -k K):\n\n\t\t\t").split()
+
+		except:
+
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
+			exit()
+
+		if args[0] == '-k' and args[1]!='/':
+
+			args[1] = getcwd() + "/" + args [1]
+
+		parser = argparse.ArgumentParser(description='This program allows to extract the parameters of an RSA private key (PEM)')
+
+		parser.add_argument('-k', dest='k',type=str,help='path of the RSA private key',required=True)
+		params=parser.parse_args(args)
+
+		tool_object = Tool(params)
+		tool_object.privex()
+
+
+	elif attack == "c":
 
 		print("\n\t\t\t ***** RSA Private Key constructor *****")
 
 		try:
 
-			args = input("\n\t\t[*] Argument ([-h] -p first_factorization_element -q second_factorization_element -e public_exponent [-o output_file]):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Argument ([-h] -p first_factorization_element -q second_factorization_element -e public_exponent [-o output_file]):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 
@@ -246,17 +273,17 @@ def choose(arg):
 		tool_object = Tool(params)
 		tool_object.privkeyconstruct()
 
-	elif attack == "c":
+	elif attack == "d":
 
 		print("\n\t\t\t ***** RSA Public Key constructor *****")
 
 		try:
 
-			args = input("\n\t\t[*] Argument ([-h] -n modulus -e public_exponent [-o output_file]):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Argument ([-h] -n modulus -e public_exponent [-o output_file]):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This program allows to construct an RSA Public Key with its parameters')
@@ -270,17 +297,17 @@ def choose(arg):
 		tool_object.pubkeyconstruct()
 
 
-	elif attack == "d":
+	elif attack == "e":
 
 		print("\n\t\t\t ***** RSA Decipher *****")
 
 		try:
 
-			args = input("\n\t\t[*] Argument ([-h] -n modulus -d private_exponent -c ciphertext):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Argument ([-h] -n modulus -d private_exponent -c ciphertext):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This simple program allows to decipher a message using RSA')
@@ -292,17 +319,17 @@ def choose(arg):
 		tool_object = Tool(params)
 		tool_object.decipher()
 
-	elif attack == "e":
+	elif attack == "f":
 
 		print("\n\t\t\t ***** RSA Encipher *****")
 
 		try:
 
-			args = input("\n\t\t[*] Argument ([-h] -n modulus -e public_exponent -p plaintext):\n\n\t\t\t").split()
+			args = raw_input("\n\t\t[*] Argument ([-h] -n modulus -e public_exponent -p plaintext):\n\n\t\t\t").split()
 
 		except:
 
-			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
+			print("\n\t\t\t[-] Argument Error: Please verify your raw_inputs\n")
 			exit()
 
 		parser = argparse.ArgumentParser(description='This simple program allows to encipher a message using RSA')

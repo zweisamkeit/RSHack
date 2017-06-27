@@ -17,13 +17,22 @@ class Tool(object):
 
 		return
 
-	def extractor(self):
+	def pubex(self):
 
-		path = getcwd() + '/Tools/Extractor'
+		path = getcwd() + '/Tools/Public_Extractor'
 		sys.path.append(path)
-		from extractor import Extractor
+		from pubex import Pubex
 
-		extractor = Extractor(self.args.k)
+		pubex = Pubex(self.args.k)
+
+	def privex(self):
+
+		path = getcwd() + '/Tools/Private_Extractor'
+		sys.path.append(path)
+		from privex import Privex
+
+		privex = Privex(self.args.k)
+
 
 	def privkeyconstruct(self):
 

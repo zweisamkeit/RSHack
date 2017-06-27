@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# RSA extractor
+# RSA Public Key parameters extractor
 # Zweisamkeit
 # 05/07/17
 # GNU/GPL v3
@@ -9,7 +9,7 @@
 import argparse
 from Crypto.PublicKey import RSA
 
-class Extractor(object):
+class Pubex(object):
 
   # Accueil
 
@@ -17,7 +17,7 @@ class Extractor(object):
 
     print ("\n")
     print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print ("\t      RSA Extractor      ")
+    print ("\t RSA Public Key Extractor")
     print ("\t       Zweisamkeit       ")
     print ("\t    GNU GPL v3 License   ")
     print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
