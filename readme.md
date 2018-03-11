@@ -46,8 +46,6 @@ $ pip install -r requirements
 ## Todo
 
 * More attacks (Discrete logarithm, factorization...)
-* Python 3 only
-* GUI? (v3.0)
 
 ## Versions
 
@@ -55,6 +53,10 @@ $ pip install -r requirements
 
 	* full POO
 	* Multiplateform
+	
+* Version 2.1 - Sunday, 11 March 2018
+
+	* Full Python 3
 
 ## Overview
 
