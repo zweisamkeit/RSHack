@@ -1,11 +1,9 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from os import getcwd
 
 import argparse
-
-import Crypto
 
 import sys
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # RSA Public Key Constructor
@@ -26,7 +26,7 @@ class PubkeyConstruct(object):
 
   def __init__(self, n, e, o):
 
-    rsaobj = RSA.construct((long(n),long(e)))
+    rsaobj = RSA.construct((n,e))
 
     key = rsaobj.exportKey().decode('utf-8')
 

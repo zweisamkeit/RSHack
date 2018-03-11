@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # RSA Decipher
@@ -6,8 +6,7 @@
 # 07/05/17
 # GNU GPL v3
 
-import sys
-import argparse
+import codecs
 
 class Decipher(object):
 
@@ -31,39 +30,10 @@ class Decipher(object):
 
     try:
 
-      p_text = hex(p)[2:].replace('L','').decode('hex')
+      p_text = codecs.decode(hex(p)[2:].replace('L',''), "hex_codec").decode('utf-8')
 
       print("\t[+] The interpreted plaintext: {}\n".format(p_text))
 
     except:
 
       print("\t[-] This plaintext is uninterpretable\n")
-
-"""
-if __name__ == "__main__" :
-
-  accueil()
-
-  parser = argparse.ArgumentParser(description='This simple program allows to decipher a RSA ciphertext')
-  parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus',required=True)
-  parser.add_argument('-d', dest='d',type=int,help='RSA private key exponent',required=True)
-  parser.add_argument('-c', dest='c',type=int,help='ciphertext',required=True)
-
-  args = parser.parse_args()
-
-  n,d,c = args.n,args.d,args.c
-
-  p = pow(c,d,n)
-
-  print("\t[+] The plaintext is: {}\n".format(p))
-
-  try:
-
-    p_text = hex(p)[2:].replace('L','').decode('hex')
-
-    print("\t[+] The interpreted plaintext: {}\n".format(p_text))
-
-  except:
-
-    print("\t[-] This plaintext is uninterpretable\n")
-"""

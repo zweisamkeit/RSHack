@@ -34,10 +34,14 @@ $ ./rshack.py
 
 ## Requirements
 
-* Python 2.7 / 3.6
+* Python3
 	
 	* PyCrypto
 	* gmpy2
+
+```
+$ pip install -r requirements
+```
 
 ## Todo
 

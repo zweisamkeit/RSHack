@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from os import getcwd
@@ -17,13 +17,6 @@ class Attack(object):
 
 		return
 
-	def printPrivateKey(self, n, e, d):
-
-		key = Crypto.PublicKey.RSA.construct((long(n),long(e),long(d)))
-
-		print("\t[+] Private key: \n\n{}\n".format(Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8')))
-
-
 	def wiener(self):
 
 		path = getcwd() + '/Attacks/Wiener'
@@ -33,8 +26,6 @@ class Attack(object):
 		wiener = Wiener(self.args.n, self.args.e)
 
 		d = wiener.d
-
-		self.printPrivateKey(self.args.n, self.args.e, d)
 
 	def hastad(self):
 
@@ -51,7 +42,6 @@ class Attack(object):
 		from fermat import Fermat
 		fermat = Fermat(self.args.n, self.args.e)
 		d = fermat.d
-		self.printPrivateKey(self.args.n, self.args.e, d)
 
 	def bleichenbacher(self):
 

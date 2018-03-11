@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # RSA Private Key parameters extractor
@@ -25,7 +25,7 @@ class Privex(object):
 
   def __init__(self, k):
 
-    key=RSA.importKey(open(k, 'r'))
+    key=RSA.importKey(open(k, 'r').read())
 
     n,e,d,p,q = key.n, key.e, key.d, key.p, key.q
 

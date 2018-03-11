@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # RSA Private Key Constructor
@@ -52,7 +52,7 @@ class PrivkeyConstruct(object):
 
     print("\n\tRSA Private Key Paramaters: n, p, q, e, d = {}, {}, {}, {}, {}\n".format(n,p,q,e,d))
 
-    key = RSA.construct((long(n),long(e),long(d),long(p),long(q)))
+    key = RSA.construct((n,e,d,p,q))
 
     key = RSA._RSAobj.exportKey(key).decode('utf-8')
 
@@ -67,41 +67,3 @@ class PrivkeyConstruct(object):
       out.close()
 
       print("\tThe key has been saved in {}\n".format(o))
-"""
-if __name__ == "__main__" :
-
-  accueil()
-
-  parser = argparse.ArgumentParser(description='This program allows to construct an RSA Public Key with its parameters')
-
-  parser.add_argument('-p', dest='p',type=int,help='first element of the modulus factorization',required=True)
-  parser.add_argument('-q', dest='q',type=int,help='second element of the modulus factorization',required=True)
-  parser.add_argument('-e', dest='e',type=int,help='public exponent',required=True)
-  parser.add_argument('-o',dest='output',type=str,help='output file')
-
-  args = parser.parse_args()
-
-  p,q,e,output = args.p,args.q,args.e,args.output
-
-  n = p*q
-  phi = (p-1)*(q-1)
-  d = inv_modulo(e,phi)
-
-  print("\tn,p,q,e,d={}, {}, {}, {}, {}\n".format(n,p,q,e,d))
-
-  key = RSA.construct((n,e,d,p,q))
-
-  key = RSA._RSAobj.exportKey(key).decode('utf-8')
-
-  print("\tPrivate key: \n\n\t\t{}\n".format(key.replace('\n','\n\t\t')))
-
-  if output is not None:
-
-    out = open(output,'w+')
-
-    out.write(key)
-
-    out.close()
-
-    print("\tThe key has been saved in {}\n".format(output))
-"""
