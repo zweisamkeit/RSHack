@@ -40,7 +40,7 @@ $ ./rshack.py
 	* gmpy2
 
 ```
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt (install the python3-pip package if necessary)
 ```
 
 ## Todo
