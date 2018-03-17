@@ -40,12 +40,12 @@ $ ./rshack.py
 	* gmpy2
 
 ```
-$ pip3 install -r requirements.txt (install the python3-pip package if necessary)
+$ pip3 install -r requirements.txt # please install the python3-pip package if necessary
 ```
 
 ## Todo
 
-* More attacks (Discrete logarithm, factorization...)
+* More attacks
 
 ## Versions
 
@@ -61,11 +61,11 @@ $ pip3 install -r requirements.txt (install the python3-pip package if necessary
 ## Overview
 
 ```
-		~~~~~~~~~~~~~~~~~~~~~~~~~
-		       RSHack v2.0       
-		       Zweisamkeit       
-			GNU GPL v3       
-		~~~~~~~~~~~~~~~~~~~~~~~~~
+		#########################
+		#      RSHack v2.1      #
+		#      Zweisamkeit      #
+		#      GNU GPL v3       #
+		#########################
 
 
 
@@ -98,7 +98,7 @@ $ pip3 install -r requirements.txt (install the python3-pip package if necessary
 
 ## Alternatives
 
-If my tool does not suit your needs, I know some great tools you'll probrably find intersting:
+If my tool does not suit your needs, I know some other tools you'll probrably find intersting:
 
 * [attackrsa](https://github.com/rk700/attackrsa)
 * [rsatool](https://github.com/ius/rsatool)
