@@ -129,24 +129,3 @@ class Wiener(object):
         self.d = self.wiener(n, e)
 
         print ("\t[+] Private exponent: {}\n".format(self.d))
-
-    # Main (Pour une fois que j'en fais un... :))
-
-    """if __name__ == "__main__":
-
-      accueil()
-
-      parser = argparse.ArgumentParser(description='This program allows to carry out a Wiener Attack')
-      parser.add_argument('-n', dest='n',type=int,help='RSA public key modulus',required=True)
-      parser.add_argument('-e', dest='e',type=int,help='RSA public key exponent',required=True)
-
-      args=parser.parse_args()
-
-      d = wiener(args.n, args.e)
-
-      print ("\t[+] Private exponent: {}\n".format(d))
-
-      key = Crypto.PublicKey.RSA.construct((args.n,args.e,d))
-
-      print("\t[+] Private key: \n\n{}\n".format(Crypto.PublicKey.RSA._RSAobj.exportKey(key).decode('utf-8')))
-      """
