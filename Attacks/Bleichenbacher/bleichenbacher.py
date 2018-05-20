@@ -205,8 +205,8 @@ class Bleichenbacher(object):
       s0 = random.randint(1,maximum) # Cherche un s0 random tel que c0 soit conforme
       c0 = (c * (pow(s0,self.e,self.n))) % self.n
 
-    self.s0 = s0
-    self.c0 = c0
+      self.s0 = s0
+      self.c0 = c0
 
     print ("\tBrouillage terminé.\n")
     #print "s0 random utilisé : ", s0
