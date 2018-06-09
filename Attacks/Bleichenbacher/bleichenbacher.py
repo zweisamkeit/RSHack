@@ -151,7 +151,7 @@ class Bleichenbacher(object):
       tmpM = set([])
       for (a,b) in M:
         tmpM.update(self.Affinage(si,a,b)) # Affinage de l'intervalle courante - Étape 3
-        M=self.Iteration(si,tmpM)
+        self.Iteration(si,tmpM)
       #print "Nouveau M : ",M
       self.Iteration(si,M)
     elif (len(M) == 1) : # S'il n'y a qu'un seul intervalle encadrant le plaintext # Étape 4
