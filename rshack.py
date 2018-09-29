@@ -10,6 +10,8 @@ from subprocess import call
 from attacks import Attack
 from tools import Tool
 
+import readline
+
 # Accueil
 
 def accueil(arg):
