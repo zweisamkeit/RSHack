@@ -75,26 +75,19 @@ def choose(arg):
 
 		try:
 
-			args = input("\n\t\t[*] Arguments ([-h] -k0 path_to_key0.pem -k1 path_to_key1.pem -k2 path_to_key2.pem -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
-
-			if args[0] != '-h':
-
-				for i in range (1,6,2):
-
-					if args[i][0] != '/':
-
-						args[i] = getcwd() + '/' + args[i]
-
+			args = input("\n\t\t[*] Arguments ([-h] -n0 modulus_key0 -n1 modulus_key1 -n2 modulus_key2 -e public_exponent -c0 cipher1 -c1 cipher2 -c2 cipher3):\n\n\t\t\t").split()
 
 		except:
 
 			print("\n\t\t\t[-] Argument Error: Please verify your inputs\n")
 			exit()
 
+
 		parser = argparse.ArgumentParser(description='This program allows to carry out an Hastad Attack')
-		parser.add_argument('-k0', dest='k0',type=str,help='path of the first RSA public key',required=True)
-		parser.add_argument('-k1', dest='k1',type=str,help='path of the second RSA public key',required=True)
-		parser.add_argument('-k2', dest='k2',type=str,help='path of the third RSA public key',required=True)
+		parser.add_argument('-n0', dest='n0',type=int,help='Modulus of the first RSA pulic key (decimal)',required=True)
+		parser.add_argument('-n1', dest='n1',type=int,help='Modulus of the second RSA pulic key (decimal)',required=True)
+		parser.add_argument('-n2', dest='n2',type=int,help='Modulus of the third RSA pulic key (decimal)',required=True)
+		parser.add_argument('-e', dest='e',type=int,help='Common public exponent (decimal)',required=True)
 		parser.add_argument('-c0', dest='c0',type=int,help='first ciphertext (decimal)',required=True)
 		parser.add_argument('-c1', dest='c1',type=int,help='second ciphertext (decimal)',required=True)
 		parser.add_argument('-c2', dest='c2',type=int,help='third ciphertext (decimal)',required=True)

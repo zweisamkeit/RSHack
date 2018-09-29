@@ -33,7 +33,7 @@ class Attack(object):
 		sys.path.append(path)
 		from hastad import Hastad
 
-		hastad = Hastad(self.args.k0, self.args.k1, self.args.k2, self.args.c0, self.args.c1, self.args.c2)
+		hastad = Hastad(self.args.n0, self.args.n1, self.args.n2, self.args.e, self.args.c0, self.args.c1, self.args.c2)
 
 	def fermat(self):
 

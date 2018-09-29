@@ -38,23 +38,9 @@ class Hastad(object):
   def root(self, a, e):
   	return (gmpy2.iroot(a,e))
 
-  def __init__(self, k0, k1, k2, c0, c1, c2):
+  def __init__(self, n0, n1, n2, e, c0, c1, c2):
 
     self.accueil()
-
-    print("\n\t[+] Keys paramters extraction...")
-
-    key0=RSA.importKey(open(k0, 'r').read())
-    key1=RSA.importKey(open(k1, 'r').read())
-    key2=RSA.importKey(open(k2, 'r').read())
-
-    n0, n1, n2 = key0.n, key1.n, key2.n
-
-    if (key0.e != key1.e or key0.e != key2.e or key1.e != key2.e):
-
-      print("\n\t[+] These keys are not good candidates for this attack")
-
-    e = key0.e
 
     print("\n\t[+] Modular inverse calculation...")
 
