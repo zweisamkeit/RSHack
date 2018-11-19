@@ -1,5 +1,11 @@
 # RSHack for CTF
 
+[![GitHub issues](https://img.shields.io/github/issues/zweisamkeit/RSHack.svg)](https://github.com/zweisamkeit/RSHack/issues)
+[![GitHub forks](https://img.shields.io/github/forks/zweisamkeit/RSHack.svg)](https://github.com/zweisamkeit/RSHack/network)
+[![GitHub stars](https://img.shields.io/github/stars/zweisamkeit/RSHack.svg)](https://github.com/zweisamkeit/RSHack/stargazers)
+[![Rawsec's CyberSecurity Inventory](https://inventory.rawsec.ml/img/badges/Rawsec-inventoried-FF5050_flat.svg)](https://inventory.rawsec.ml/tools.html#RSHack)
+[![GitHub license](https://img.shields.io/github/license/zweisamkeit/RSHack.svg)](https://github.com/zweisamkeit/RSHack)
+
 RSHack is a tool written in python which allows to carry out some attacks on RSA, and offer a few tools to manipulate RSA keys.
 
 ## Features
